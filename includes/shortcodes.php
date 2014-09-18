@@ -233,8 +233,8 @@ function edd_bbp_d_dashboard_shortcode( $atts, $content = null ) {
 	#support-tabs li a { padding: 4px; }
 	#mods-grid { margin-bottom: 20px; }
 	</style>
-	<ul class="nav nav-tabs" id="support-tabs">
-		<li><a href="#your-waiting-tickets" data-toggle="tab"><?php printf( __( 'Awaiting Your Response (%d)', 'pojo-bbpress-support' ), $waiting_tickets->post_count ); ?></a></li>
+	<ul class="nav nav-tabs" id="support-tabs" role="tablist">
+		<li class="active"><a href="#your-waiting-tickets" data-toggle="tab"><?php printf( __( 'Awaiting Your Response (%d)', 'pojo-bbpress-support' ), $waiting_tickets->post_count ); ?></a></li>
 		<li><a href="#your-tickets" data-toggle="tab"><?php printf( __( 'Your Open Tickets (%d)', 'pojo-bbpress-support' ), $assigned_tickets->post_count ); ?></a></li>
 		<li><a href="#unassigned" data-toggle="tab"><?php printf( __( 'Unassigned Tickets (%d)', 'pojo-bbpress-support' ), $unassigned_tickets->post_count ); ?></a></li>
 		<li><a href="#no-replies" data-toggle="tab"><?php printf( __( 'No Replies (%d)', 'pojo-bbpress-support' ), $no_reply_tickets->post_count ); ?></a></li>
@@ -242,7 +242,7 @@ function edd_bbp_d_dashboard_shortcode( $atts, $content = null ) {
 		<li><a href="#feature-requests" data-toggle="tab"><?php _e( 'Feature Requests', 'pojo-bbpress-support' ); ?></a></li>
 	</ul>
 	<div class="tab-content">
-		<div class="tab-pane active" id="your-waiting-tickets">
+		<div class="tab-pane fade in active" id="your-waiting-tickets">
 			<ul class="bbp-tickets">
 				<?php if ( $waiting_tickets->have_posts() ) : ?>
 					<form class="form-table" method="post">
@@ -278,7 +278,7 @@ function edd_bbp_d_dashboard_shortcode( $atts, $content = null ) {
 				<?php endif; ?>
 			</ul>
 		</div>
-		<div class="tab-pane" id="your-tickets">
+		<div class="tab-pane fade" id="your-tickets">
 			<ul class="bbp-tickets">
 				<?php if ( $assigned_tickets->have_posts() ) : ?>
 					<table class="table table-striped" width="100%">
@@ -307,7 +307,7 @@ function edd_bbp_d_dashboard_shortcode( $atts, $content = null ) {
 				<?php endif; ?>
 			</ul>
 		</div>
-		<div class="tab-pane" id="unassigned">
+		<div class="tab-pane fade" id="unassigned">
 			<ul class="bbp-tickets">
 				<?php if( $unassigned_tickets->have_posts() ) : ?>
 					<table class="table table-striped" width="100%">
@@ -336,7 +336,7 @@ function edd_bbp_d_dashboard_shortcode( $atts, $content = null ) {
 				<?php endif; ?>
 			</ul>
 		</div>
-		<div class="tab-pane" id="no-replies">
+		<div class="tab-pane fade" id="no-replies">
 			<ul class="bbp-tickets">
 				<?php if( $no_reply_tickets->have_posts() ) : ?>
 					<table class="table table-striped" width="100%">
@@ -366,7 +366,7 @@ function edd_bbp_d_dashboard_shortcode( $atts, $content = null ) {
 				<?php endif; ?>
 			</ul>
 		</div>
-		<div class="tab-pane" id="unresolved">
+		<div class="tab-pane fade" id="unresolved">
 			<ul class="bbp-tickets">
 				<?php if( $unresolved_tickets->have_posts() ) : ?>
 					<table class="table table-striped" width="100%">
@@ -398,7 +398,7 @@ function edd_bbp_d_dashboard_shortcode( $atts, $content = null ) {
 				<?php endif; ?>
 			</ul>
 		</div>
-		<div class="tab-pane" id="feature-requests">
+		<div class="tab-pane fade" id="feature-requests">
 			<ul class="bbp-tickets">
 				<?php if ( $feature_requests->have_posts() ) : ?>
 					<?php while ( $feature_requests->have_posts() ) : $feature_requests->the_post(); ?>
