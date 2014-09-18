@@ -1,4 +1,5 @@
 <?php
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 /**
  * Support Hours Widgets
@@ -10,7 +11,7 @@ class BBPS_Forum_Support_Hours extends WP_Widget {
 			'description' => 'Set your support times for your support forum - these will be displayed to your posters'
 		);
 
-		$this->WP_Widget( 'bbps_support_hours_widget', __( 'Forum Support Hours', 'edd-bbpress-dashboard' ), $widget_ops );
+		$this->WP_Widget( 'bbps_support_hours_widget', __( 'Forum Support Hours', 'pojo-bbpress-support' ), $widget_ops );
 	}
 
 	public function form( $instance ) {

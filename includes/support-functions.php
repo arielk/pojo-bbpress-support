@@ -1,4 +1,6 @@
 <?php
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+
 /**
  * Support Forum Functions
  */
@@ -412,9 +414,9 @@ function edd_bbp_d_sidebar() {
 		<?php do_action( 'edd_bbp_d_sidebar' ); ?>
 
 		<h3><?php echo get_the_author_meta( 'first_name' ) . '  ' . get_the_author_meta( 'last_name' ); ?></h3>
-		<p class="bbp-user-forum-role"><?php  printf( __( 'Forum Role: %s',      'bbpress' ), bbp_get_user_display_role( $user_id )    ); ?></p>
-		<p class="bbp-user-topic-count"><?php printf( __( 'Topics Started: %s',  'bbpress' ), bbp_get_user_topic_count_raw( $user_id ) ); ?></p>
-		<p class="bbp-user-reply-count"><?php printf( __( 'Replies Created: %s', 'bbpress' ), bbp_get_user_reply_count_raw( $user_id ) ); ?></p>
+		<p class="bbp-user-forum-role"><?php  printf( __( 'Forum Role: %s',      'pojo-bbpress-support' ), bbp_get_user_display_role( $user_id )    ); ?></p>
+		<p class="bbp-user-topic-count"><?php printf( __( 'Topics Started: %s',  'pojo-bbpress-support' ), bbp_get_user_topic_count_raw( $user_id ) ); ?></p>
+		<p class="bbp-user-reply-count"><?php printf( __( 'Replies Created: %s', 'pojo-bbpress-support' ), bbp_get_user_reply_count_raw( $user_id ) ); ?></p>
 
 		<div class="rcp_support_status">
 			<h4>Priority Support Access</h4>
@@ -548,9 +550,9 @@ function edd_bbp_d_display_connected_docs() {
     ?>
     <div class="edd_bbp_d_support_forum_options">
     <?php if( bbp_is_single_topic() ) : ?>
-        <h3><?php _e( 'Related Documentation', 'edd_bbp_d' ); ?>:</h3>
+        <h3><?php _e( 'Related Documentation', 'pojo-bbpress-support' ); ?>:</h3>
     <?php else : ?>
-        <strong><?php _e( 'Related Documentation', 'edd_bbp_d' ); ?>:</strong>
+        <strong><?php _e( 'Related Documentation', 'pojo-bbpress-support' ); ?>:</strong>
     <?php endif; ?>
         <?php while ( $connected->have_posts() ) : $connected->the_post(); ?>
             <div><a href="<?php the_permalink(); ?>" target="_blank"><?php the_title(); ?></a></div>

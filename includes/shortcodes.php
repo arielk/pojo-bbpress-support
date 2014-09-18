@@ -1,10 +1,17 @@
 <?php
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+
 /**
  * Shortcodes
  */
 
 /**
  * Support Dashboard Shortcode Callback
+ *
+ * @param $atts
+ * @param $content
+ *
+ * @return string
  */
 function edd_bbp_d_dashboard_shortcode( $atts, $content = null ) {
 	/*
@@ -16,23 +23,19 @@ function edd_bbp_d_dashboard_shortcode( $atts, $content = null ) {
 	*/
 	global $user_ID;
 
-	if( ! is_user_logged_in() ) {
+	if ( ! is_user_logged_in() ) {
 		return edd_login_form();
 	}
 
 	if ( ! current_user_can( 'moderate' ) )
-		return;
-
-	wp_enqueue_script( 'bootstrap', EDD_BBP_D_URL . 'bootstrap/js/bootstrap.min.js'   );
-	wp_enqueue_style(  'bootstrap', EDD_BBP_D_URL . 'bootstrap/css/bootstrap.min.css' );
-
-
+		return '';
+	
 	// Show ticket overview for all mods
 	$mods = edd_bbp_d_get_all_mods(); ?>
 
-	<?php if( $mods ) : ?>
+	<?php if ( $mods ) : ?>
 		<div class="row" id="mods-grid">
-		<?php foreach( $mods as $mod ) : ?>
+		<?php foreach ( $mods as $mod ) : ?>
 
 			<?php $ticket_count = edd_bbp_d_count_tickets_of_mod( $mod->ID ); ?>
 
@@ -40,29 +43,30 @@ function edd_bbp_d_dashboard_shortcode( $atts, $content = null ) {
 				<div class="mod-name"><?php echo $mod->display_name; ?></div>
 				<div class="mod-gravatar"><?php echo get_avatar( $mod->ID, 45 ); ?></div>
 				<div class="mod-ticket-count">
-					<a href="<?php echo add_query_arg( 'mod', $mod->ID ); ?>">Tickets: <strong><?php echo $ticket_count; ?></strong></div></a>
+					<a href="<?php echo add_query_arg( 'mod', $mod->ID ); ?>"><?php _e( 'Tickets:', 'pojo-bbpress-support' ); ?> <strong><?php echo $ticket_count; ?></strong></a>
+				</div>
 			</div>
 
 		<?php endforeach; ?>
 		</div>
 	<?php endif;
 
-	if( ! empty( $_GET['mod'] ) ) {
+	if ( ! empty( $_GET['mod'] ) ) {
 		// Get open, assigned tickets
 		$args = array(
-			'post_type'  => 'topic',
+			'post_type' => 'topic',
 			'meta_query' => array(
 				'relation' => 'AND',
 				array(
-					'key'   => '_bbps_topic_status',
+					'key' => '_bbps_topic_status',
 					'value' => '1',
 				),
 				array(
-					'key'   => 'bbps_topic_assigned',
+					'key' => 'bbps_topic_assigned',
 					'value' => $_GET['mod'],
-				)
+				),
 			),
-			'posts_per_page' => -1,
+			'posts_per_page' => - 1,
 			'post_parent__not_in' => array( 318 )
 		);
 		$assigned_tickets = new WP_Query( $args );
@@ -70,15 +74,15 @@ function edd_bbp_d_dashboard_shortcode( $atts, $content = null ) {
 		ob_start(); ?>
 		<div class="bbp-tickets">
 			<?php if ( $assigned_tickets->have_posts() ) : ?>
-				<h4>Tickets assigned to <?php echo $mod->display_name; ?></h4>
+				<h4>><?php printf( __( 'Tickets assigned to %s', 'pojo-bbpress-support' ), $mod->display_name ); ?></h4>
 					<table class="table table-striped" width="100%">
 						<tr>
-							<th width="35%"><?php _e( 'Topic Title', 'edd-bbpress-dashboard' ); ?></th>
-							<th width="25%"><?php _e( 'Last Post By', 'edd-bbpress-dashboard' ); ?></th>
-							<th width="25%"><?php _e( 'Last Updated', 'edd-bbpress-dashboard' ); ?></th>
-							<th width="15%"><?php _e( 'Post Count', 'edd-bbpress-dashboard' ); ?></th>
+							<th width="35%"><?php _e( 'Topic Title', 'pojo-bbpress-support' ); ?></th>
+							<th width="25%"><?php _e( 'Last Post By', 'pojo-bbpress-support' ); ?></th>
+							<th width="25%"><?php _e( 'Last Updated', 'pojo-bbpress-support' ); ?></th>
+							<th width="15%"><?php _e( 'Post Count', 'pojo-bbpress-support' ); ?></th>
 						</tr>
-						<?php while( $assigned_tickets->have_posts() ) : $assigned_tickets->the_post(); ?>
+						<?php while ( $assigned_tickets->have_posts() ) : $assigned_tickets->the_post(); ?>
 							<?php $parent = get_post_field( 'post_parent', get_the_ID() ); ?>
 							<?php $row_class = ( $parent == 499 ) ? 'danger' : ''; ?>
 							<?php $last_reply_id = bbp_get_topic_last_reply_id( get_the_ID() ); ?>
@@ -95,7 +99,7 @@ function edd_bbp_d_dashboard_shortcode( $atts, $content = null ) {
 					<?php wp_reset_postdata(); ?>
 					</table>
 			<?php else : ?>
-				<div><?php _e( 'This mod has no assigned tickets.', 'edd-bbpress-dashboard' ); ?></div>
+				<div><?php _e( 'This mod has no assigned tickets.', 'pojo-bbpress-support' ); ?></div>
 			<?php endif; ?>
 		</div>
 		<?php
@@ -108,11 +112,11 @@ function edd_bbp_d_dashboard_shortcode( $atts, $content = null ) {
 		'meta_query' => array(
 			'relation' => 'AND',
 			array(
-				'key'   => '_bbps_topic_pending'
+				'key' => '_bbps_topic_pending',
 			),
 			array(
 				'key'   => '_bbps_topic_status',
-				'value' => '1'
+				'value' => '1',
 			),
 			array(
 				'key'   => 'bbps_topic_assigned',
@@ -218,14 +222,10 @@ function edd_bbp_d_dashboard_shortcode( $atts, $content = null ) {
 		'post_type'  => 'topic',
 		'post_parent' => 318,
 		'posts_per_page' => 30,
-		'post_status' => 'publish'
+		'post_status' => 'publish',
 	);
 	$feature_requests = new WP_Query( $args );
-
-	$open_count       = 0;
-	$unassigned_count = 0;
-	$unresolved_count = 0;
-
+	
 	ob_start(); ?>
 	<style>
 	#support-tabs { padding-left: 0; }
@@ -234,12 +234,12 @@ function edd_bbp_d_dashboard_shortcode( $atts, $content = null ) {
 	#mods-grid { margin-bottom: 20px; }
 	</style>
 	<ul class="nav nav-tabs" id="support-tabs">
-		<li><a href="#your-waiting-tickets" data-toggle="tab">Awaiting Your Response (<?php echo $waiting_tickets->post_count; ?>)</a></li>
-		<li><a href="#your-tickets" data-toggle="tab">Your Open Tickets (<?php echo $assigned_tickets->post_count; ?>)</a></li>
-		<li><a href="#unassigned" data-toggle="tab">Unassigned Tickets (<?php echo $unassigned_tickets->post_count; ?>)</a></li>
-		<li><a href="#no-replies" data-toggle="tab">No Replies (<?php echo $no_reply_tickets->post_count; ?>)</a></li>
-		<li><a href="#unresolved" data-toggle="tab">Unresolved Tickets (<?php echo $unresolved_tickets->post_count; ?>)</a></li>
-		<li><a href="#feature-requests" data-toggle="tab">Feature Requests</a></li>
+		<li><a href="#your-waiting-tickets" data-toggle="tab"><?php printf( __( 'Awaiting Your Response (%d)', 'pojo-bbpress-support' ), $waiting_tickets->post_count ); ?></a></li>
+		<li><a href="#your-tickets" data-toggle="tab"><?php printf( __( 'Your Open Tickets (%d)', 'pojo-bbpress-support' ), $assigned_tickets->post_count ); ?></a></li>
+		<li><a href="#unassigned" data-toggle="tab"><?php printf( __( 'Unassigned Tickets (%d)', 'pojo-bbpress-support' ), $unassigned_tickets->post_count ); ?></a></li>
+		<li><a href="#no-replies" data-toggle="tab"><?php printf( __( 'No Replies (%d)', 'pojo-bbpress-support' ), $no_reply_tickets->post_count ); ?></a></li>
+		<li><a href="#unresolved" data-toggle="tab"><?php printf( __( 'Unresolved Tickets (%d)', 'pojo-bbpress-support' ), $unresolved_tickets->post_count ); ?></a></li>
+		<li><a href="#feature-requests" data-toggle="tab"><?php _e( 'Feature Requests', 'pojo-bbpress-support' ); ?></a></li>
 	</ul>
 	<div class="tab-content">
 		<div class="tab-pane active" id="your-waiting-tickets">
@@ -249,9 +249,9 @@ function edd_bbp_d_dashboard_shortcode( $atts, $content = null ) {
 						<table class="table table-striped" width="100%">
 							<tr>
 								<th></th>
-								<th width="40%"><?php _e( 'Topic Title', 'edd-bbpress-dashboard' ); ?></th>
-								<th width="25%"><?php _e( 'Last Updated', 'edd-bbpress-dashboard' ); ?></th>
-								<th width="25%"><?php _e( 'Actions', 'edd-bbpress-dashboard' ); ?></th>
+								<th width="40%"><?php _e( 'Topic Title', 'pojo-bbpress-support' ); ?></th>
+								<th width="25%"><?php _e( 'Last Updated', 'pojo-bbpress-support' ); ?></th>
+								<th width="25%"><?php _e( 'Actions', 'pojo-bbpress-support' ); ?></th>
 							</tr>
 							<?php while( $waiting_tickets->have_posts() ) : $waiting_tickets->the_post(); ?>
 								<?php $parent = get_post_field( 'post_parent', get_the_ID() ); ?>
@@ -265,7 +265,7 @@ function edd_bbp_d_dashboard_shortcode( $atts, $content = null ) {
 										<a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
 									</td>
 									<td><?php bbp_topic_freshness_link( get_the_ID() ); ?></td>
-									<td><a href="<?php echo $remove_url; ?>"><?php _e( 'Remove Pending Status', 'edd-bbpress-dashboard' ); ?></a></td>
+									<td><a href="<?php echo $remove_url; ?>"><?php _e( 'Remove Pending Status', 'pojo-bbpress-support' ); ?></a></td>
 								</tr>
 							<?php endwhile; ?>
 						</table>
@@ -274,7 +274,7 @@ function edd_bbp_d_dashboard_shortcode( $atts, $content = null ) {
 						<?php wp_reset_postdata(); ?>
 					</form>
 				<?php else : ?>
-					<li><?php _e( 'No tickets awaiting your reply. Excellent, now go grab some unresolved or unassigned tickets.', 'edd-bbpress-dashboard' ); ?></li>
+					<li><?php _e( 'No tickets awaiting your reply. Excellent, now go grab some unresolved or unassigned tickets.', 'pojo-bbpress-support' ); ?></li>
 				<?php endif; ?>
 			</ul>
 		</div>
@@ -283,9 +283,9 @@ function edd_bbp_d_dashboard_shortcode( $atts, $content = null ) {
 				<?php if ( $assigned_tickets->have_posts() ) : ?>
 					<table class="table table-striped" width="100%">
 						<tr>
-							<th width="40%"><?php _e( 'Topic Title', 'edd-bbpress-dashboard' ); ?></th>
-							<th width="30%"><?php _e( 'Last Post By', 'edd-bbpress-dashboard' ); ?></th>
-							<th width="30%"><?php _e( 'Last Updated', 'edd-bbpress-dashboard' ); ?></th>
+							<th width="40%"><?php _e( 'Topic Title', 'pojo-bbpress-support' ); ?></th>
+							<th width="30%"><?php _e( 'Last Post By', 'pojo-bbpress-support' ); ?></th>
+							<th width="30%"><?php _e( 'Last Updated', 'pojo-bbpress-support' ); ?></th>
 						</tr>
 						<?php while( $assigned_tickets->have_posts() ) : $assigned_tickets->the_post(); ?>
 							<?php $parent = get_post_field( 'post_parent', get_the_ID() ); ?>
@@ -303,7 +303,7 @@ function edd_bbp_d_dashboard_shortcode( $atts, $content = null ) {
 					<?php wp_reset_postdata(); ?>
 					</table>
 				<?php else : ?>
-					<li><?php _e( 'No unresolved tickets, yay! Now go grab some unresolved or unassigned tickets.', 'edd-bbpress-dashboard' ); ?></li>
+					<li><?php _e( 'No unresolved tickets, yay! Now go grab some unresolved or unassigned tickets.', 'pojo-bbpress-support' ); ?></li>
 				<?php endif; ?>
 			</ul>
 		</div>
@@ -312,9 +312,9 @@ function edd_bbp_d_dashboard_shortcode( $atts, $content = null ) {
 				<?php if( $unassigned_tickets->have_posts() ) : ?>
 					<table class="table table-striped" width="100%">
 						<tr>
-							<th width="40%"><?php _e( 'Topic Title', 'edd-bbpress-dashboard' ); ?></th>
-							<th width="30%"><?php _e( 'Last Post By', 'edd-bbpress-dashboard' ); ?></th>
-							<th width="30%"><?php _e( 'Last Updated', 'edd-bbpress-dashboard' ); ?></th>
+							<th width="40%"><?php _e( 'Topic Title', 'pojo-bbpress-support' ); ?></th>
+							<th width="30%"><?php _e( 'Last Post By', 'pojo-bbpress-support' ); ?></th>
+							<th width="30%"><?php _e( 'Last Updated', 'pojo-bbpress-support' ); ?></th>
 						</tr>
 						<?php while( $unassigned_tickets->have_posts() ) : $unassigned_tickets->the_post(); ?>
 							<?php $parent = get_post_field( 'post_parent', get_the_ID() ); ?>
@@ -332,7 +332,7 @@ function edd_bbp_d_dashboard_shortcode( $atts, $content = null ) {
 					<?php wp_reset_postdata(); ?>
 					</table>
 				<?php else : ?>
-					<li><?php _e( 'No unassigned tickets, yay!', 'edd-bbpress-dashboard' ); ?></li>
+					<li><?php _e( 'No unassigned tickets, yay!', 'pojo-bbpress-support' ); ?></li>
 				<?php endif; ?>
 			</ul>
 		</div>
@@ -341,9 +341,9 @@ function edd_bbp_d_dashboard_shortcode( $atts, $content = null ) {
 				<?php if( $no_reply_tickets->have_posts() ) : ?>
 					<table class="table table-striped" width="100%">
 						<tr>
-							<th width="40%"><?php _e( 'Topic Title', 'edd-bbpress-dashboard' ); ?></th>
-							<th width="30%"><?php _e( 'Posted', 'edd-bbpress-dashboard' ); ?></th>
-							<th width="30%"><?php _e( 'Assignee', 'edd-bbpress-dashboard' ); ?></th>
+							<th width="40%"><?php _e( 'Topic Title', 'pojo-bbpress-support' ); ?></th>
+							<th width="30%"><?php _e( 'Posted', 'pojo-bbpress-support' ); ?></th>
+							<th width="30%"><?php _e( 'Assignee', 'pojo-bbpress-support' ); ?></th>
 						</tr>
 						<?php while( $no_reply_tickets->have_posts() ) : $no_reply_tickets->the_post(); ?>
 							<?php $parent = get_post_field( 'post_parent', get_the_ID() ); ?>
@@ -356,13 +356,13 @@ function edd_bbp_d_dashboard_shortcode( $atts, $content = null ) {
 								<a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
 								</td>
 								<td><?php bbp_topic_freshness_link( get_the_ID() ); ?></td>
-								<td><?php echo ( !empty( $assignee_name ) ) ? $assignee_name : __( 'Unassigned', 'edd-bbpress-dashboard' ); ?></td>
+								<td><?php echo ( !empty( $assignee_name ) ) ? $assignee_name : __( 'Unassigned', 'pojo-bbpress-support' ); ?></td>
 							</tr>
 						<?php endwhile; ?>
 					<?php wp_reset_postdata(); ?>
 					</table>
 				<?php else : ?>
-					<li><?php _e( 'No tickets without replies, yay!', 'edd-bbpress-dashboard' ); ?></li>
+					<li><?php _e( 'No tickets without replies, yay!', 'pojo-bbpress-support' ); ?></li>
 				<?php endif; ?>
 			</ul>
 		</div>
@@ -371,10 +371,10 @@ function edd_bbp_d_dashboard_shortcode( $atts, $content = null ) {
 				<?php if( $unresolved_tickets->have_posts() ) : ?>
 					<table class="table table-striped" width="100%">
 						<tr>
-							<th width="35%"><?php _e( 'Topic Title', 'edd-bbpress-dashboard' ); ?></th>
-							<th width="25%"><?php _e( 'Last Updated', 'edd-bbpress-dashboard' ); ?></th>
-							<th width="25%"><?php _e( 'Assignee', 'edd-bbpress-dashboard' ); ?></th>
-							<th width="15%"><?php _e( 'Post Count', 'edd-bbpress-dashboard' ); ?></th>
+							<th width="35%"><?php _e( 'Topic Title', 'pojo-bbpress-support' ); ?></th>
+							<th width="25%"><?php _e( 'Last Updated', 'pojo-bbpress-support' ); ?></th>
+							<th width="25%"><?php _e( 'Assignee', 'pojo-bbpress-support' ); ?></th>
+							<th width="15%"><?php _e( 'Post Count', 'pojo-bbpress-support' ); ?></th>
 						</tr>
 						<?php while( $unresolved_tickets->have_posts() ) : $unresolved_tickets->the_post(); ?>
 							<?php $parent = get_post_field( 'post_parent', get_the_ID() ); ?>
@@ -387,14 +387,14 @@ function edd_bbp_d_dashboard_shortcode( $atts, $content = null ) {
 								<a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
 								</td>
 								<td><?php bbp_topic_freshness_link( get_the_ID() ); ?></td>
-								<td><?php echo ( !empty( $assignee_name ) ) ? $assignee_name : __( 'Unassigned', 'edd-bbpress-dashboard' ); ?></td>
+								<td><?php echo ( !empty( $assignee_name ) ) ? $assignee_name : __( 'Unassigned', 'pojo-bbpress-support' ); ?></td>
 								<td><?php bbp_topic_post_count( get_the_ID() ); ?></td>
 							</tr>
 						<?php endwhile; ?>
 					<?php wp_reset_postdata(); ?>
 					</table>
 				<?php else : ?>
-					<li><?php _e( 'No unassigned tickets, yay!', 'edd-bbpress-dashboard' ); ?></li>
+					<li><?php _e( 'No unassigned tickets, yay!', 'pojo-bbpress-support' ); ?></li>
 				<?php endif; ?>
 			</ul>
 		</div>

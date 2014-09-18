@@ -1,11 +1,15 @@
 <?php
 /*
- * Plugin Name: EDD bbPress Support Dashboard
- * Description: Support dashboard for sites running EDD and bbPress
- * Author: Pippin Williamson and Sunny Ratilal
- * Author URI: https://easydigitaldownloads.com/
- * Version: 2.0
- */
+Plugin Name: EDD bbPress Support Dashboard
+Description: Support dashboard for sites running EDD and bbPress
+Author: Pippin Williamson and Sunny Ratilal and Yakir Sitbon
+Author URI: https://easydigitaldownloads.com/
+Version: 2.0
+Text Domain: pojo-bbpress-support
+Domain Path: /languages/
+*/
+
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 function edd_bbp_d_activate() {
 	include_once plugin_dir_path( __FILE__ ) . 'includes/core-options.php';
@@ -17,6 +21,8 @@ register_activation_hook( __FILE__ , 'edd_bbp_d_activate' );
  * Setup the plugin
  */
 function edd_bbp_d_setup() {
+	load_plugin_textdomain( 'pojo-bbpress-support', false, basename( dirname( __FILE__ ) ) . '/languages' );
+	
 	edd_bbp_d_define_constants();
 	edd_bbp_d_includes();
 }
@@ -58,7 +64,7 @@ function edd_bbp_d_includes() {
 		'support-functions',
 		'core-options',
 		'shortcodes',
-		'widget-hours'
+		'widget-hours',
 	);
 
 	foreach ( $include_files as $file ) {

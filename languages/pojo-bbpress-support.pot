@@ -1,0 +1,272 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: pojo-bbpress-support 1.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-09-18 16:21+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: admin/admin-functions.php:33 admin/bbps-admin.php:16
+msgid "Support Forum:"
+msgstr ""
+
+#: admin/admin-functions.php:73
+msgid "Show forum post count"
+msgstr ""
+
+#: admin/admin-functions.php:76
+msgid "Show Rank"
+msgstr ""
+
+#: admin/admin-functions.php:80
+msgid "Topic Status Settings"
+msgstr ""
+
+#: admin/admin-functions.php:83 admin/bbps-settings.php:11
+msgid "Default Status:"
+msgstr ""
+
+#: admin/admin-functions.php:89 admin/admin-functions.php:90
+#: admin/admin-functions.php:91 admin/bbps-settings.php:17
+#: admin/bbps-settings.php:18 admin/bbps-settings.php:19
+msgid "Display Status:"
+msgstr ""
+
+#: admin/admin-functions.php:96
+msgid "Admin"
+msgstr ""
+
+#: admin/admin-functions.php:97 admin/bbps-settings.php:25
+msgid "Topic Creator"
+msgstr ""
+
+#: admin/admin-functions.php:98
+msgid "Forum Moderator"
+msgstr ""
+
+#: admin/admin-functions.php:101 admin/bbps-settings.php:6
+msgid "Support Froum Settings"
+msgstr ""
+
+#: admin/admin-functions.php:105
+msgid "Urgent Topic Status"
+msgstr ""
+
+#: admin/admin-functions.php:108
+msgid "Move topics"
+msgstr ""
+
+#: admin/admin-functions.php:112 admin/bbps-settings.php:28
+msgid "Assign topics"
+msgstr ""
+
+#: admin/admin-functions.php:116
+msgid "Claim topics"
+msgstr ""
+
+#: admin/admin-functions.php:119
+msgid "Display Username:"
+msgstr ""
+
+#: admin/bbps-settings.php:37
+msgid ""
+"Enable and configure the settings for topic statuses these will be displayed "
+"on each topic"
+msgstr ""
+
+#: admin/bbps-settings.php:43
+msgid ""
+"Enable and configure the settings for support forums, these options will be "
+"displayed on each topic within your support forums"
+msgstr ""
+
+#: admin/bbps-settings.php:51
+msgid "Show the users post count below their gravatar?"
+msgstr ""
+
+#: admin/bbps-settings.php:58
+msgid "Display the users rank title below their gravatar?"
+msgstr ""
+
+#: admin/bbps-settings.php:66
+msgid "not resolved"
+msgstr ""
+
+#: admin/bbps-settings.php:67
+msgid "resolved"
+msgstr ""
+
+#: admin/bbps-settings.php:68
+msgid "not a support question"
+msgstr ""
+
+#: admin/bbps-settings.php:70
+msgid "This is the default status that will get displayed on all topics"
+msgstr ""
+
+#: admin/bbps-settings.php:77
+msgid "Resolved"
+msgstr ""
+
+#: admin/bbps-settings.php:84
+msgid "Not Resolved"
+msgstr ""
+
+#: admin/bbps-settings.php:91
+msgid "Not a support question"
+msgstr ""
+
+#: admin/bbps-settings.php:98
+msgid "Allow the admin to update the topic status (recommended)."
+msgstr ""
+
+#: admin/bbps-settings.php:105
+msgid "Allow the person who created the topic to update the status."
+msgstr ""
+
+#: admin/bbps-settings.php:112
+msgid "Allow the forum moderators to update the post status."
+msgstr ""
+
+#: admin/bbps-settings.php:119
+msgid ""
+"Allow administrators and forum moderators to assign topics to other "
+"administrators and forum moderators"
+msgstr ""
+
+#: includes/shortcodes.php:46
+msgid "Tickets:"
+msgstr ""
+
+#: includes/shortcodes.php:77
+#, php-format
+msgid "Tickets assigned to %s"
+msgstr ""
+
+#: includes/shortcodes.php:80 includes/shortcodes.php:252
+#: includes/shortcodes.php:286 includes/shortcodes.php:315
+#: includes/shortcodes.php:344 includes/shortcodes.php:374
+msgid "Topic Title"
+msgstr ""
+
+#: includes/shortcodes.php:81 includes/shortcodes.php:287
+#: includes/shortcodes.php:316
+msgid "Last Post By"
+msgstr ""
+
+#: includes/shortcodes.php:82 includes/shortcodes.php:253
+#: includes/shortcodes.php:288 includes/shortcodes.php:317
+#: includes/shortcodes.php:375
+msgid "Last Updated"
+msgstr ""
+
+#: includes/shortcodes.php:83 includes/shortcodes.php:377
+msgid "Post Count"
+msgstr ""
+
+#: includes/shortcodes.php:102
+msgid "This mod has no assigned tickets."
+msgstr ""
+
+#: includes/shortcodes.php:237
+#, php-format
+msgid "Awaiting Your Response (%d)"
+msgstr ""
+
+#: includes/shortcodes.php:238
+#, php-format
+msgid "Your Open Tickets (%d)"
+msgstr ""
+
+#: includes/shortcodes.php:239
+#, php-format
+msgid "Unassigned Tickets (%d)"
+msgstr ""
+
+#: includes/shortcodes.php:240
+#, php-format
+msgid "No Replies (%d)"
+msgstr ""
+
+#: includes/shortcodes.php:241
+#, php-format
+msgid "Unresolved Tickets (%d)"
+msgstr ""
+
+#: includes/shortcodes.php:242
+msgid "Feature Requests"
+msgstr ""
+
+#: includes/shortcodes.php:254
+msgid "Actions"
+msgstr ""
+
+#: includes/shortcodes.php:268
+msgid "Remove Pending Status"
+msgstr ""
+
+#: includes/shortcodes.php:277
+msgid ""
+"No tickets awaiting your reply. Excellent, now go grab some unresolved or "
+"unassigned tickets."
+msgstr ""
+
+#: includes/shortcodes.php:306
+msgid ""
+"No unresolved tickets, yay! Now go grab some unresolved or unassigned "
+"tickets."
+msgstr ""
+
+#: includes/shortcodes.php:335 includes/shortcodes.php:397
+msgid "No unassigned tickets, yay!"
+msgstr ""
+
+#: includes/shortcodes.php:345
+msgid "Posted"
+msgstr ""
+
+#: includes/shortcodes.php:346 includes/shortcodes.php:376
+msgid "Assignee"
+msgstr ""
+
+#: includes/shortcodes.php:359 includes/shortcodes.php:390
+msgid "Unassigned"
+msgstr ""
+
+#: includes/shortcodes.php:365
+msgid "No tickets without replies, yay!"
+msgstr ""
+
+#: includes/support-functions.php:417
+#, php-format
+msgid "Forum Role: %s"
+msgstr ""
+
+#: includes/support-functions.php:418
+#, php-format
+msgid "Topics Started: %s"
+msgstr ""
+
+#: includes/support-functions.php:419
+#, php-format
+msgid "Replies Created: %s"
+msgstr ""
+
+#: includes/support-functions.php:553 includes/support-functions.php:555
+msgid "Related Documentation"
+msgstr ""
+
+#: includes/widget-hours.php:14
+msgid "Forum Support Hours"
+msgstr ""

@@ -1,4 +1,5 @@
 <?php
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 //hook into the forum atributes meta box
 
@@ -12,7 +13,7 @@ function bbps_extend_forum_attributes_mb($forum_id){
 	?>
 
 	<p>
-		<strong><?php _e( 'Support Forum:', 'bbps' ); ?></strong>
+		<strong><?php _e( 'Support Forum:', 'pojo-bbpress-support' ); ?></strong>
 		<input type="checkbox" name="bbps-support-forum" value="1"<?php checked( true, $support_forum ); ?>/>
 	</p>
 
