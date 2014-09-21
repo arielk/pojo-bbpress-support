@@ -15,7 +15,7 @@ function edd_bbp_d_add_support_forum_features() {
 		if ( current_user_can( 'moderate' ) ) {
 			edd_bbp_d_generate_status_options( $topic_id, $status );
 		} else { ?>
-			This topic is: <?php echo $status; ?>
+			<?php _e( 'This topic is:', 'pojo-bbpress-support' ); ?> <?php echo $status; ?>
 		<?php } ?>
 	</div>
 	<?php
@@ -167,15 +167,15 @@ function edd_bbp_d_user_assign_dropdown() {
 
 	if ( ! empty( $all_users ) ) {
 		if ( $claimed_user_id > 0 ) {
-			$text = "Reassign topic to: ";
+			$text = __( 'Reassign topic to:', 'pojo-bbpress-support' );;
 		} else {
-			$text = "Assign topic to: ";
+			$text = __( 'Assign topic to:', 'pojo-bbpress-support' );
 		}
 
-		echo $text;
+		echo $text . ' ';
 ?>
 		<select name="bbps_assign_list" id="bbps_support_options">
-		<option value="">Unassigned</option><?php
+		<option value=""><?php _e( 'Unassigned', 'pojo-bbpress-support' ); ?></option><?php
 		foreach ( $all_users as $user ) {
 ?>
 			<option value="<?php echo $user->ID; ?>"<?php selected( $user->ID, $claimed_user_id ); ?>> <?php echo $user->user_firstname . ' ' . $user->user_lastname ; ?></option>
@@ -204,7 +204,7 @@ function edd_bbp_d_assign_topic() {
 		$post_link
 EMAILMSG;
 			if ( $assigned == true ) {
-				wp_mail( $user_email, 'A forum topic has been assigned to you', $message );
+				wp_mail( $user_email, __( 'A forum topic has been assigned to you', 'pojo-bbpress-support' ), $message );
 			}
 		}
 	}
@@ -222,7 +222,7 @@ function edd_bbp_d_ping_topic_assignee() {
 		A ticket that has been assigned to you is in need of attention.
 		$post_link
 EMAILMSG;
-		wp_mail( $user_email, 'EDD Ticket Ping', $message );
+		wp_mail( $user_email, __( 'EDD Ticket Ping', 'pojo-bbpress-support' ), $message );
 	}
 }
 
@@ -255,7 +255,7 @@ function edd_bbp_d_modify_title( $title, $topic_id = 0 ) {
 	$topic_id = bbp_get_topic_id( $topic_id );
 	//2 is the resolved status ID
 	if ( get_post_meta( $topic_id, '_bbps_topic_status', true ) == 2 )
-		echo '<span class="resolved">[Resolved] </span>';
+		echo '<span class="resolved">[' . __( 'Resolved', 'pojo-bbpress-support' ) . '] </span>';
 }
 add_action( 'bbp_theme_before_topic_title', 'edd_bbp_d_modify_title' );
 
@@ -287,22 +287,19 @@ function edd_bbp_d_maybe_remove_pending( $reply_id, $topic_id, $forum_id, $anony
 add_action( 'bbp_new_reply', 'edd_bbp_d_maybe_remove_pending', 20, 5 );
 
 function edd_bbp_d_bulk_remove_pending() {
-
-	if( ! current_user_can( 'moderate' ) ) {
+	if ( ! current_user_can( 'moderate' ) ) {
 		return;
 	}
 
-	if( empty( $_POST['tickets'] ) ) {
+	if ( empty( $_POST['tickets'] ) ) {
 		return;
 	}
 
 	$tickets = array_map( 'absint', $_POST['tickets'] );
 
-	foreach( $tickets as $ticket ) {
+	foreach ( $tickets as $ticket ) {
 		delete_post_meta( $ticket, '_bbps_topic_pending' );
 	}
-
-
 }
 add_action( 'edd_remove_ticket_pending_status', 'edd_bbp_d_bulk_remove_pending', 20, 5 );
 
@@ -337,7 +334,7 @@ function edd_bbp_d_add_user_purchases_link() {
 	$user_email = bbp_get_displayed_user_field( 'user_email' );
 
 	echo '<div class="edd_users_purchases">';
-	echo '<h4>User\'s Purchases:</h4>';
+	echo '<h4>' . __( 'User\'s Purchases', 'pojo-bbpress-support' ) . ':</h4>';
 	$purchases = edd_get_users_purchases( $user_email, 100, false, 'any' );
 	if ( $purchases ) :
 		echo '<ul>';
@@ -350,7 +347,7 @@ function edd_bbp_d_add_user_purchases_link() {
 			}
 
 			if( function_exists( 'edd_software_licensing' ) ) {
-				echo '<li><strong>Licenses:</strong></li>';
+				echo '<li><strong>' . __( 'Licenses', 'pojo-bbpress-support' ) . ':</strong></li>';
 				$licenses  = edd_software_licensing()->get_licenses_of_purchase( $purchase->ID );
 				if( $licenses ) {
 					foreach ( $licenses as $license ) {
@@ -362,7 +359,7 @@ function edd_bbp_d_add_user_purchases_link() {
 		}
 		echo '</ul>';
 	else :
-		echo '<p>This user has never purchased anything.</p>';
+		echo '<p>' . __( 'This user has never purchased anything.', 'pojo-bbpress-support' ) . '</p>';
 	endif;
 	echo '</div>';
 }

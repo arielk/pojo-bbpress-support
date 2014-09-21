@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pojo-bbpress-support 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-09-18 16:21+0300\n"
+"POT-Creation-Date: 2014-09-21 19:20+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -115,7 +115,7 @@ msgstr ""
 msgid "This is the default status that will get displayed on all topics"
 msgstr ""
 
-#: admin/bbps-settings.php:77
+#: admin/bbps-settings.php:77 includes/support-functions.php:258
 msgid "Resolved"
 msgstr ""
 
@@ -241,6 +241,7 @@ msgid "Assignee"
 msgstr ""
 
 #: includes/shortcodes.php:359 includes/shortcodes.php:390
+#: includes/support-functions.php:178
 msgid "Unassigned"
 msgstr ""
 
@@ -248,22 +249,54 @@ msgstr ""
 msgid "No tickets without replies, yay!"
 msgstr ""
 
-#: includes/support-functions.php:417
+#: includes/support-functions.php:18
+msgid "This topic is:"
+msgstr ""
+
+#: includes/support-functions.php:170
+msgid "Reassign topic to:"
+msgstr ""
+
+#: includes/support-functions.php:172
+msgid "Assign topic to:"
+msgstr ""
+
+#: includes/support-functions.php:207
+msgid "A forum topic has been assigned to you"
+msgstr ""
+
+#: includes/support-functions.php:225
+msgid "EDD Ticket Ping"
+msgstr ""
+
+#: includes/support-functions.php:337
+msgid "User's Purchases"
+msgstr ""
+
+#: includes/support-functions.php:350
+msgid "Licenses"
+msgstr ""
+
+#: includes/support-functions.php:362
+msgid "This user has never purchased anything."
+msgstr ""
+
+#: includes/support-functions.php:414
 #, php-format
 msgid "Forum Role: %s"
 msgstr ""
 
-#: includes/support-functions.php:418
+#: includes/support-functions.php:415
 #, php-format
 msgid "Topics Started: %s"
 msgstr ""
 
-#: includes/support-functions.php:419
+#: includes/support-functions.php:416
 #, php-format
 msgid "Replies Created: %s"
 msgstr ""
 
-#: includes/support-functions.php:553 includes/support-functions.php:555
+#: includes/support-functions.php:550 includes/support-functions.php:552
 msgid "Related Documentation"
 msgstr ""
 
