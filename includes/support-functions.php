@@ -127,7 +127,6 @@ function edd_bbp_d_assign_topic_form() {
 
 		global $current_user;
 		get_currentuserinfo();
-		$current_user_id = $current_user->ID;
 		?>
 		<div id="bbps_support_forum_options">
 			<?php
