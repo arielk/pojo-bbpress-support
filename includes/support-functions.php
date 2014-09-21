@@ -253,8 +253,7 @@ add_action( 'bbp_template_before_single_topic', 'edd_bbp_d_ping_asignee_button' 
 // adds a class and status to the front of the topic title
 function edd_bbp_d_modify_title( $title, $topic_id = 0 ) {
 	$topic_id = bbp_get_topic_id( $topic_id );
-	//2 is the resolved status ID
-	if ( get_post_meta( $topic_id, '_bbps_topic_status', true ) == 2 )
+	if ( edd_bbp_d_topic_resolved( $topic_id ) )
 		echo '<span class="resolved">[' . __( 'Resolved', 'pojo-bbpress-support' ) . '] </span>';
 }
 add_action( 'bbp_theme_before_topic_title', 'edd_bbp_d_modify_title' );
@@ -262,7 +261,7 @@ add_action( 'bbp_theme_before_topic_title', 'edd_bbp_d_modify_title' );
 
 function edd_bbp_bbp_get_topic_class( $classes, $topic_id ) {
 	$topic_id = bbp_get_topic_id( $topic_id );
-	if ( get_post_meta( $topic_id, '_bbps_topic_status', true ) == 2 )
+	if ( edd_bbp_d_topic_resolved( $topic_id ) )
 		$classes[] = 'topic-resolved';
 		
 	return $classes;

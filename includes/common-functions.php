@@ -1,4 +1,6 @@
 <?php
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+
 /**
  * Common Functions
  */
@@ -54,8 +56,5 @@ function edd_bbp_d_is_topic_premium() {
  * @return bool
  */
 function edd_bbp_d_topic_resolved( $topic_id ) {
-	if ( 2 == get_post_meta( $topic_id, '_bbps_topic_status', true ) )
-		return true;
-	else
-		return false;
+	return ( 2 == get_post_meta( $topic_id, '_bbps_topic_status', true ) );
 }

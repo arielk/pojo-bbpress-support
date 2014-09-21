@@ -4,7 +4,7 @@
  *
  * Copyright (c) 2013, Easy Digital Downloads.
  */
-
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 function edd_bbp_get_subforums( $args ) {
 	$args['nopaging'] = true;

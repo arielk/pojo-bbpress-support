@@ -2,6 +2,7 @@
 /**
  * Core Options
  */
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 function edd_bbp_d_add_options() {
 	// Default options

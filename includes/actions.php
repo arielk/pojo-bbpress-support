@@ -1,4 +1,6 @@
 <?php
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+
 /**
  * Actions
  *
@@ -18,11 +20,5 @@ function edd_bbp_d_process_actions() {
 	if ( ! empty( $_POST['bbps_topic_ping_submit'] ) ) {
 		edd_bbp_d_ping_topic_assignee( $_POST );
 	}
-
-	if ( ( isset( $_GET['action'] ) && isset( $_GET['topic_id'] ) && $_GET['action'] == 'bbps_make_topic_urgent' )  )
-		edd_bbp_d_urgent_topic();
-
-	if ( ( isset( $_GET['action'] ) && isset( $_GET['topic_id'] ) && $_GET['action'] == 'bbps_make_topic_not_urgent' )  )
-		edd_bbp_d_not_urgent_topic();
 }
 add_action( 'init', 'edd_bbp_d_process_actions' );
