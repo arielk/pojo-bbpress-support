@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pojo-bbpress-support 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-09-18 16:21+0300\n"
-"PO-Revision-Date: 2014-09-21 19:17+0200\n"
+"PO-Revision-Date: 2014-09-21 19:34+0200\n"
 "Last-Translator: Ariel K <a@arielk.net>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -48,7 +48,7 @@ msgstr "מנהל ראשי"
 
 #: admin/admin-functions.php:97 admin/bbps-settings.php:25
 msgid "Topic Creator"
-msgstr "יותר הדיון"
+msgstr "פותח הדיון"
 
 #: admin/admin-functions.php:98
 msgid "Forum Moderator"
@@ -60,7 +60,7 @@ msgstr "הגדרות פורום תמיכה"
 
 #: admin/admin-functions.php:105
 msgid "Urgent Topic Status"
-msgstr ""
+msgstr "סטטוס נושא דחוף"
 
 #: admin/admin-functions.php:108
 msgid "Move topics"
@@ -128,11 +128,11 @@ msgstr "לא שאלת תמיכה"
 
 #: admin/bbps-settings.php:98
 msgid "Allow the admin to update the topic status (recommended)."
-msgstr ""
+msgstr "לאפשר למנהל הראשי לעדכן את סטטוס הדיון (מומלץ)."
 
 #: admin/bbps-settings.php:105
 msgid "Allow the person who created the topic to update the status."
-msgstr ""
+msgstr "לאפשר לפותח הדיון לעדכן את הסטטוס של הדיון."
 
 #: admin/bbps-settings.php:112
 msgid "Allow the forum moderators to update the post status."
@@ -142,7 +142,7 @@ msgstr ""
 msgid ""
 "Allow administrators and forum moderators to assign topics to other "
 "administrators and forum moderators"
-msgstr ""
+msgstr "לאפשר למנהלי מערכת ומנהלי פורומים להקצות נושאים למנהלים אחרים"
 
 #: includes/shortcodes.php:46
 msgid "Tickets:"
@@ -151,7 +151,7 @@ msgstr "טיקטים:"
 #: includes/shortcodes.php:77
 #, php-format
 msgid "Tickets assigned to %s"
-msgstr ""
+msgstr "הטיקטים המשוייכים ל%s"
 
 #: includes/shortcodes.php:80 includes/shortcodes.php:252
 #: includes/shortcodes.php:286 includes/shortcodes.php:315
@@ -205,7 +205,7 @@ msgstr "טיקטים לטיפול (%d)"
 
 #: includes/shortcodes.php:242
 msgid "Feature Requests"
-msgstr ""
+msgstr "בקשות ורעיונות"
 
 #: includes/shortcodes.php:254
 msgid "Actions"
@@ -220,12 +220,15 @@ msgid ""
 "No tickets awaiting your reply. Excellent, now go grab some unresolved or "
 "unassigned tickets."
 msgstr ""
+"לא מחכים לך טיקטים לטיפול. מצויין, עכשיו אפשר לטפל בדיונים שעדיין אינם "
+"בטיפול."
 
 #: includes/shortcodes.php:306
 msgid ""
 "No unresolved tickets, yay! Now go grab some unresolved or unassigned "
 "tickets."
 msgstr ""
+"לא נמצאו טיקטים לא פתורים, הידד! עכשיו אפשר לטפל בדיונים שעדיין אינם בטיפול."
 
 #: includes/shortcodes.php:335 includes/shortcodes.php:397
 msgid "No unassigned tickets, yay!"
@@ -245,7 +248,7 @@ msgstr "אין רשומים"
 
 #: includes/shortcodes.php:365
 msgid "No tickets without replies, yay!"
-msgstr ""
+msgstr "לא נמצאו טיקטים ללא תגובות, הידד!"
 
 #: includes/support-functions.php:417
 #, php-format
