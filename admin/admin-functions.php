@@ -122,26 +122,25 @@ function edd_bbp_d_register_admin_settings() {
 add_action( 'bbp_register_admin_settings' , 'edd_bbp_d_register_admin_settings' );
 
 function edd_bbp_d_validate_checkbox_group( $input ) {
-    // Update only the needed options
-    foreach ( $input as $key => $value ) {
-        $newoptions[ $key ] = $value;
-    }
+	// Update only the needed options
+	$newoptions = array();
+	foreach ( $input as $key => $value ) {
+		$newoptions[ $key ] = $value;
+	}
 
-    // Return all options
-    return $newoptions;
+	// Return all options
+	return $newoptions;
 }
 
 function edd_bbp_d_validate_options( $input ) {
-	$options = get_option('_bbps_reply_count');
-
+	$options = get_option( '_bbps_reply_count' );
 	$i = 1;
-
 	foreach ( $input as $array ) {
 		foreach ( $array as $key => $value ) {
-		      $options[ $i ][ $key ] = $value;
+			$options[ $i ][ $key ] = $value;
 		}
 		$i++;
 	}
 
-    return $options;
+	return $options;
 }

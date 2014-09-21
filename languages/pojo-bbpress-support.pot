@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pojo-bbpress-support 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-09-21 20:12+0300\n"
+"POT-Creation-Date: 2014-09-21 20:31+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -144,6 +144,26 @@ msgstr ""
 msgid ""
 "Allow administrators and forum moderators to assign topics to other "
 "administrators and forum moderators"
+msgstr ""
+
+#: includes/class-pojo-settings-supports.php:12
+msgid "Support Forum"
+msgstr ""
+
+#: includes/class-pojo-settings-supports.php:18
+msgid "Features Forum"
+msgstr ""
+
+#: includes/class-pojo-settings-supports.php:25
+msgid "Pages:"
+msgstr ""
+
+#: includes/class-pojo-settings-supports.php:35
+msgid "Supports Settings"
+msgstr ""
+
+#: includes/class-pojo-settings-supports.php:36
+msgid "Supports"
 msgstr ""
 
 #: includes/shortcodes.php:46

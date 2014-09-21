@@ -79,3 +79,9 @@ function edd_bbp_d_register_widgets() {
 	register_widget( 'BBPS_Forum_Support_Hours' );
 }
 add_action( 'widgets_init', 'edd_bbp_d_register_widgets' );
+
+function edd_bbp_d_register_settings() {
+	include( 'includes/class-pojo-settings-supports.php' );
+	new Pojo_Settings_Supports( 110 );
+}
+add_action( 'pojo_framework_base_settings_included', 'edd_bbp_d_register_settings' );

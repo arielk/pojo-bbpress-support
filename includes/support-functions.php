@@ -107,11 +107,11 @@ function edd_bbp_d_count_tickets_of_mod( $mod_id = 0 ) {
 			),
 			array(
 				'key' => '_bbps_topic_status',
-				'value' => '1'
+				'value' => '1',
 			)
 		),
 		'nopaging' => true,
-		'post_parent__not_in' => array( 318 )
+		'post_parent__not_in' => array( pojo_get_option( 'pojo_features_forum_id' ) )
 	);
 
 	$query = new WP_Query( $args );

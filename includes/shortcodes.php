@@ -51,6 +51,7 @@ function edd_bbp_d_dashboard_shortcode( $atts, $content = null ) {
 		</div>
 	<?php endif;
 
+	$features_forum_id = pojo_get_option( 'pojo_features_forum_id' );
 	if ( ! empty( $_GET['mod'] ) ) {
 		// Get open, assigned tickets
 		$args = array(
@@ -67,8 +68,9 @@ function edd_bbp_d_dashboard_shortcode( $atts, $content = null ) {
 				),
 			),
 			'posts_per_page' => - 1,
-			'post_parent__not_in' => array( 318 )
+			'post_parent__not_in' => array( $features_forum_id )
 		);
+		
 		$assigned_tickets = new WP_Query( $args );
 		$mod = get_userdata( $_GET['mod'] );
 		ob_start(); ?>
@@ -127,7 +129,7 @@ function edd_bbp_d_dashboard_shortcode( $atts, $content = null ) {
 		'orderby' => 'meta_value',
 		'meta_key' => '_bbp_last_active_time',
 		'posts_per_page' => -1,
-		'post_parent__not_in' => array( 318 )
+		'post_parent__not_in' => array( $features_forum_id )
 	);
 	$waiting_tickets = new WP_Query( $args );
 
@@ -150,7 +152,7 @@ function edd_bbp_d_dashboard_shortcode( $atts, $content = null ) {
 		'orderby' => 'meta_value',
 		'meta_key' => '_bbp_last_active_time',
 		'posts_per_page' => -1,
-		'post_parent__not_in' => array( 318 )
+		'post_parent__not_in' => array( $features_forum_id )
 	);
 	$assigned_tickets = new WP_Query( $args );
 
@@ -163,7 +165,7 @@ function edd_bbp_d_dashboard_shortcode( $atts, $content = null ) {
 			array(
 				'key'     => 'bbps_topic_assigned',
 				'compare' => 'NOT EXISTS',
-				'value'   => '1'
+				'value'   => '1',
 			),
 			array(
 				'key'   => '_bbps_topic_status',
@@ -175,7 +177,7 @@ function edd_bbp_d_dashboard_shortcode( $atts, $content = null ) {
 		'meta_key' => '_bbp_last_active_time',
 		'posts_per_page' => -1,
 		'post_status' => 'publish',
-		'post_parent__not_in' => array( 318 )
+		'post_parent__not_in' => array( $features_forum_id )
 	);
 	$unassigned_tickets = new WP_Query( $args );
 
@@ -187,7 +189,7 @@ function edd_bbp_d_dashboard_shortcode( $atts, $content = null ) {
 			'relation' => 'AND',
 			array(
 				'key'     => '_bbp_voice_count',
-				'value'   => '1'
+				'value'   => '1',
 			),
 			array(
 				'key'   => '_bbps_topic_status',
@@ -195,14 +197,14 @@ function edd_bbp_d_dashboard_shortcode( $atts, $content = null ) {
 			),
 		),
 		'posts_per_page' => -1,
-		'post_status' => 'publish'
+		'post_status' => 'publish',
 	);
 	$no_reply_tickets = new WP_Query( $args );
 
 	// Get unresolved tickets
 	$args = array(
 		'post_type'  => 'topic',
-		'post_parent__not_in' => array( 318 ),
+		'post_parent__not_in' => array( $features_forum_id ),
 		'posts_per_page' => -1,
 		'post_status' => 'publish',
 		'order' => 'ASC',
@@ -220,7 +222,7 @@ function edd_bbp_d_dashboard_shortcode( $atts, $content = null ) {
 	// Get unresolved tickets
 	$args = array(
 		'post_type'  => 'topic',
-		'post_parent' => 318,
+		'post_parent' => $features_forum_id,
 		'posts_per_page' => 30,
 		'post_status' => 'publish',
 	);
