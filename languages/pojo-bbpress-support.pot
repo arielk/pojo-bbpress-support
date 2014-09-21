@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pojo-bbpress-support 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-09-21 20:05+0300\n"
+"POT-Creation-Date: 2014-09-21 20:12+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -115,11 +115,12 @@ msgstr ""
 msgid "This is the default status that will get displayed on all topics"
 msgstr ""
 
-#: admin/bbps-settings.php:77 includes/support-functions.php:258
+#: admin/bbps-settings.php:77 includes/support-functions.php:82
+#: includes/support-functions.php:256
 msgid "Resolved"
 msgstr ""
 
-#: admin/bbps-settings.php:84
+#: admin/bbps-settings.php:84 includes/support-functions.php:81
 msgid "Not Resolved"
 msgstr ""
 
@@ -241,7 +242,7 @@ msgid "Assignee"
 msgstr ""
 
 #: includes/shortcodes.php:359 includes/shortcodes.php:390
-#: includes/support-functions.php:178
+#: includes/support-functions.php:177
 msgid "Unassigned"
 msgstr ""
 
@@ -253,35 +254,47 @@ msgstr ""
 msgid "This topic is:"
 msgstr ""
 
-#: includes/support-functions.php:170
+#: includes/support-functions.php:77
+msgid "This topic is"
+msgstr ""
+
+#: includes/support-functions.php:83
+msgid "Not a Support Question"
+msgstr ""
+
+#: includes/support-functions.php:86
+msgid "Update"
+msgstr ""
+
+#: includes/support-functions.php:169
 msgid "Reassign topic to:"
 msgstr ""
 
-#: includes/support-functions.php:172
+#: includes/support-functions.php:171
 msgid "Assign topic to:"
 msgstr ""
 
-#: includes/support-functions.php:207
+#: includes/support-functions.php:206
 msgid "A forum topic has been assigned to you"
 msgstr ""
 
-#: includes/support-functions.php:225
+#: includes/support-functions.php:224
 msgid "EDD Ticket Ping"
 msgstr ""
 
-#: includes/support-functions.php:346
+#: includes/support-functions.php:344
 msgid "User's Purchases"
 msgstr ""
 
-#: includes/support-functions.php:359
+#: includes/support-functions.php:357
 msgid "Licenses"
 msgstr ""
 
-#: includes/support-functions.php:371
+#: includes/support-functions.php:369
 msgid "This user has never purchased anything."
 msgstr ""
 
-#: includes/support-functions.php:415
+#: includes/support-functions.php:413
 msgid ""
 "Please search the forums for existing questions before posting a new one."
 msgstr ""

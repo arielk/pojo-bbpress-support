@@ -74,16 +74,16 @@ function edd_bbp_d_generate_status_options( $topic_id ) {
 		$value = $default;
 	?>
 	<form id="bbps-topic-status" name="bbps_support" action="" method="post">
-		<label for="bbps_support_options">This topic is: </label>
+		<label for="bbps_support_options"><?php _e( 'This topic is', 'pojo-bbpress-support' ); ?>: </label>
 		<select name="bbps_support_option" id="bbps_support_options">
 		<?php
 			// we only want to display the options the user has selected. the long term goal is to let users add their own forum statuses
-			if ( isset( $dropdown_options['res'] ) ) { ?><option value="1" <?php selected( $value, 1 ) ; ?> >Not Resolved</option><?php }
-			if ( isset( $dropdown_options['notres'] ) ) {?><option value="2" <?php selected( $value, 2 ) ; ?> >Resolved</option><?php }
-			if ( isset( $dropdown_options['notsup'] ) ) {?><option value="3" <?php selected( $value, 3 ) ; ?> >Not a Support Question</option><?php
+			if ( isset( $dropdown_options['res'] ) ) { ?><option value="1"<?php selected( $value, 1 ) ; ?>><?php _e( 'Not Resolved', 'pojo-bbpress-support' ); ?></option><?php }
+			if ( isset( $dropdown_options['notres'] ) ) {?><option value="2"<?php selected( $value, 2 ) ; ?>><?php _e( 'Resolved', 'pojo-bbpress-support' ); ?></option><?php }
+			if ( isset( $dropdown_options['notsup'] ) ) {?><option value="3"<?php selected( $value, 3 ) ; ?>><?php _e( 'Not a Support Question', 'pojo-bbpress-support' ); ?></option><?php
 		} ?>
 		</select>
-		<input type="submit" value="Update" name="bbps_support_submit" />
+		<input type="submit" value="<?php _e( 'Update', 'pojo-bbpress-support' ); ?>" name="bbps_support_submit" />
 		<input type="hidden" value="bbps_update_status" name="bbps_action"/>
 		<input type="hidden" value="<?php echo $topic_id ?>" name="bbps_topic_id" />
 	</form>
