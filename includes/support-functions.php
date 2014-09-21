@@ -412,6 +412,6 @@ function edd_bbp_get_topic_assignee_name( $user_id = NULL ) {
 
 function edd_bbp_d_new_topic_notice() {
 	if( bbp_is_single_forum() )
-		echo '<div class="bbp-template-notice"><p>Please search the forums for existing questions before posting a new one.</p></div>';
+		echo '<div class="bbp-template-notice"><p>' . __( 'Please search the forums for existing questions before posting a new one.', 'pojo-bbpress-support' ) . '</p></div>';
 }
 add_action( 'bbp_template_notices', 'edd_bbp_d_new_topic_notice');
