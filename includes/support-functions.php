@@ -260,6 +260,15 @@ function edd_bbp_d_modify_title( $title, $topic_id = 0 ) {
 add_action( 'bbp_theme_before_topic_title', 'edd_bbp_d_modify_title' );
 
 
+function edd_bbp_bbp_get_topic_class( $classes, $topic_id ) {
+	$topic_id = bbp_get_topic_id( $topic_id );
+	if ( get_post_meta( $topic_id, '_bbps_topic_status', true ) == 2 )
+		$classes[] = 'topic-resolved';
+		
+	return $classes;
+}
+add_action( 'bbp_get_topic_class', 'edd_bbp_bbp_get_topic_class', 10, 2 );
+
 function edd_bbp_add_topic_meta( $topic_id = 0, $topic ) {
 	if ( $topic->post_type != 'topic' )
 		return;
@@ -365,29 +374,6 @@ function edd_bbp_d_add_user_purchases_link() {
 }
 add_action( 'bbp_template_after_user_profile', 'edd_bbp_d_add_user_purchases_link' );
 
-function edd_bbp_d_add_user_priority_support_status() {
-	if ( ! current_user_can( 'moderate' ) )
-		return;
-
-	if ( ! function_exists( 'rcp_get_status' ) )
-		return;
-
-	$user_id = bbp_get_displayed_user_field( 'ID' );
-
-	echo '<div class="rcp_support_status">';
-	echo '<h4>Priority Support Access</h4>';
-	if ( rcp_is_active( $user_id ) ) {
-		echo '<p>Has <strong>Priority Support</strong> access.</p>';
-	} elseif ( rcp_is_expired( $user_id ) ) {
-		echo '<p><strong>Priority Support</strong> access has <span style="color:red;">expired</span>.</p>';
-	} else {
-		echo '<p>Has no priority support accesss</p>';
-	}
-	echo '</div>';
-}
-add_action( 'bbp_template_after_user_profile', 'edd_bbp_d_add_user_priority_support_status' );
-
-
 function edd_bbp_d_reply_and_resolve( $reply_id = 0, $topic_id = 0, $forum_id = 0, $anonymous_data = false, $author_id = 0, $is_edit = false ) {
 	if ( isset( $_POST['bbp_reply_close'] ) ) {
 		update_post_meta( $topic_id, '_bbps_topic_status', 2 );
@@ -398,73 +384,6 @@ function edd_bbp_d_reply_and_resolve( $reply_id = 0, $topic_id = 0, $forum_id = 
 	}
 }
 add_action( 'bbp_new_reply', 'edd_bbp_d_reply_and_resolve', 0, 6 );
-
-function edd_bbp_d_sidebar() {
-	global $post;
-
-	$user_id = get_the_author_meta( 'ID' );
-	$user_data = get_userdata( $user_id );
-
-?>
-	<div class="box">
-
-		<?php do_action( 'edd_bbp_d_sidebar' ); ?>
-
-		<h3><?php echo get_the_author_meta( 'first_name' ) . '  ' . get_the_author_meta( 'last_name' ); ?></h3>
-		<p class="bbp-user-forum-role"><?php  printf( __( 'Forum Role: %s',      'pojo-bbpress-support' ), bbp_get_user_display_role( $user_id )    ); ?></p>
-		<p class="bbp-user-topic-count"><?php printf( __( 'Topics Started: %s',  'pojo-bbpress-support' ), bbp_get_user_topic_count_raw( $user_id ) ); ?></p>
-		<p class="bbp-user-reply-count"><?php printf( __( 'Replies Created: %s', 'pojo-bbpress-support' ), bbp_get_user_reply_count_raw( $user_id ) ); ?></p>
-
-		<div class="rcp_support_status">
-			<h4>Priority Support Access</h4>
-			<?php if ( function_exists( 'rcp_is_active' ) ) { if ( rcp_is_active( $user_id ) ) { ?>
-				<p>Has <strong>Priority Support</strong> access.</p>
-			<?php } elseif ( rcp_is_expired( $user_id ) ) { ?>
-				<p><strong>Priority Support</strong> access has <span style="color:red;">expired</span>.</p>
-			<?php } else { ?>
-				<p>Has no priority support accesss</p>
-			<?php } } ?>
-		</div><!-- /.rcp_support_status -->
-
-		<div class="edd_users_purchases">
-			<h4>User's Purchases:</h4>
-			<?php
-			$purchases = edd_get_users_purchases( $user_data->user_email, 100, false, 'any' );
-			if ( $purchases ) :
-				echo '<ul>';
-				foreach ( $purchases as $purchase ) {
-
-					echo '<li>';
-
-						echo '<strong><a href="' . admin_url( 'edit.php?post_type=download&page=edd-payment-history&view=view-order-details&id=' . $purchase->ID ) . '">#' . $purchase->ID . ' - ' . edd_get_payment_status( $purchase, true ) . '</a></strong><br/>';
-
-						$downloads = edd_get_payment_meta_downloads( $purchase->ID );
-						foreach ( $downloads as $download ) {
-							echo get_the_title( $download['id'] ) . ' - ' . date( 'F j, Y', strtotime( $purchase->post_date ) ) . '<br/>';
-						}
-
-						if( function_exists( 'edd_software_licensing' ) ) {
-							$licenses  = edd_software_licensing()->get_licenses_of_purchase( $purchase->ID );
-							if( $licenses ) {
-								echo '<strong>Licenses:</strong><br/>';
-								foreach ( $licenses as $license ) {
-									$key = edd_software_licensing()->get_license_key( $license->ID );
-									echo '<a href="' . admin_url( 'edit.php?post_type=download&page=edd-licenses&s=' . $key ) . '">' . $key . '</a>';
-									echo ' - ' . edd_software_licensing()->get_license_status( $license->ID );
-									echo '<br/>';
-								}
-							}
-							echo '<hr/>';
-						}
-					echo '</li>';				}
-				echo '</ul>';
-			else :
-				echo '<p>This user has never purchased anything.</p>';
-			endif; ?>
-		</div>
-	</div>
-	<?php
-}
 
 function edd_bbp_get_topic_assignee_id( $topic_id = NULL ) {
 	if ( empty( $topic_id ) )
@@ -490,79 +409,6 @@ function edd_bbp_get_topic_assignee_name( $user_id = NULL ) {
 
 	return $topic_assignee_name;
 }
-
-function edd_bbp_send_priority_to_hall( $topic_id = 0, $forum_id = 0, $anonymous_data = false, $topic_author = 0 ) {
-
-	// Bail if topic is not published
-	if ( ! bbp_is_topic_published( $topic_id ) )
-		return;
-
-	if( $forum_id != 499 )
-		return;
-
-	$json = json_encode( array(
-		'title'   => 'A new priority ticket has been posted',
-		'message' => esc_html( get_the_title( $topic_id ) ) . ' - ' . esc_url( get_permalink( $topic_id ) )
-	) );
-
-	$args = array(
-		'headers' => array(
-			'content-type' => 'application/json'
-		),
-		'body' => $json,
-		'timeout' => 15,
-		'sslverify' => false
-	);
-
-	wp_remote_post( 'https://hall.com/api/1/services/generic/7a4672fbb62a48920058d7cc0c1da6c8', $args );
-
-}
-add_action( 'bbp_new_topic', 'edd_bbp_send_priority_to_hall', 10, 4 );
-
-function edd_bbp_d_connect_forum_to_docs() {
-    p2p_register_connection_type( array(
-        'name' => 'forums_to_docs',
-        'from' => 'forum',
-        'to' => 'docs'
-    ) );
-}
-add_action( 'p2p_init', 'edd_bbp_d_connect_forum_to_docs' );
-
-function edd_bbp_d_display_connected_docs() {
-    if ( ! current_user_can( 'moderate' ) )
-        return;
-
-	$item_id = bbp_get_forum_id();
-
-    // Find connected pages
-    $connected = new WP_Query( array(
-      'connected_type' => 'forums_to_docs',
-      'connected_items' => $item_id,
-      'nopaging' => true,
-      'post_status' => 'publish'
-    ) );
-
-    // Display connected pages
-    if ( $connected->have_posts() ) :
-    ?>
-    <div class="edd_bbp_d_support_forum_options">
-    <?php if( bbp_is_single_topic() ) : ?>
-        <h3><?php _e( 'Related Documentation', 'pojo-bbpress-support' ); ?>:</h3>
-    <?php else : ?>
-        <strong><?php _e( 'Related Documentation', 'pojo-bbpress-support' ); ?>:</strong>
-    <?php endif; ?>
-        <?php while ( $connected->have_posts() ) : $connected->the_post(); ?>
-            <div><a href="<?php the_permalink(); ?>" target="_blank"><?php the_title(); ?></a></div>
-        <?php endwhile; ?>
-    </div><br/>
-    <?php
-    // Prevent weirdness
-    wp_reset_postdata();
-
-    endif;
-}
-add_action( 'bbp_template_before_single_forum', 'edd_bbp_d_display_connected_docs' );
-add_action( 'edd_bbp_d_sidebar', 'edd_bbp_d_display_connected_docs' );
 
 function edd_bbp_d_new_topic_notice() {
 	if( bbp_is_single_forum() )

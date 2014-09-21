@@ -3,61 +3,60 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: pojo-bbpress-support 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-09-21 20:01+0300\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2014-09-18 16:21+0300\n"
+"PO-Revision-Date: 2014-09-21 19:17+0200\n"
+"Last-Translator: Ariel K <a@arielk.net>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.5\n"
 
 #: admin/admin-functions.php:33 admin/bbps-admin.php:16
 msgid "Support Forum:"
-msgstr ""
+msgstr "פורום תמיכה:"
 
 #: admin/admin-functions.php:73
 msgid "Show forum post count"
-msgstr ""
+msgstr "הצגת מספר פוסטים בפורום"
 
 #: admin/admin-functions.php:76
 msgid "Show Rank"
-msgstr ""
+msgstr "הצגת דירוג:"
 
 #: admin/admin-functions.php:80
 msgid "Topic Status Settings"
-msgstr ""
+msgstr "הגדרות ססטוס דיון"
 
 #: admin/admin-functions.php:83 admin/bbps-settings.php:11
 msgid "Default Status:"
-msgstr ""
+msgstr "סטטוס ברירת מחדל:"
 
 #: admin/admin-functions.php:89 admin/admin-functions.php:90
 #: admin/admin-functions.php:91 admin/bbps-settings.php:17
 #: admin/bbps-settings.php:18 admin/bbps-settings.php:19
 msgid "Display Status:"
-msgstr ""
+msgstr "תצוגת סטטוס:"
 
 #: admin/admin-functions.php:96
 msgid "Admin"
-msgstr ""
+msgstr "מנהל ראשי"
 
 #: admin/admin-functions.php:97 admin/bbps-settings.php:25
 msgid "Topic Creator"
-msgstr ""
+msgstr "יותר הדיון"
 
 #: admin/admin-functions.php:98
 msgid "Forum Moderator"
-msgstr ""
+msgstr "מנהל פורום"
 
 #: admin/admin-functions.php:101 admin/bbps-settings.php:6
 msgid "Support Froum Settings"
-msgstr ""
+msgstr "הגדרות פורום תמיכה"
 
 #: admin/admin-functions.php:105
 msgid "Urgent Topic Status"
@@ -65,11 +64,11 @@ msgstr ""
 
 #: admin/admin-functions.php:108
 msgid "Move topics"
-msgstr ""
+msgstr "הזזת דיונים"
 
 #: admin/admin-functions.php:112 admin/bbps-settings.php:28
 msgid "Assign topics"
-msgstr ""
+msgstr "הרשמה לדיונים"
 
 #: admin/admin-functions.php:116
 msgid "Claim topics"
@@ -77,7 +76,7 @@ msgstr ""
 
 #: admin/admin-functions.php:119
 msgid "Display Username:"
-msgstr ""
+msgstr "הצגת שם משתמש:"
 
 #: admin/bbps-settings.php:37
 msgid ""
@@ -93,11 +92,11 @@ msgstr ""
 
 #: admin/bbps-settings.php:51
 msgid "Show the users post count below their gravatar?"
-msgstr ""
+msgstr "הצגת מספר הפוסטים של המשתמש מתחת לאווטאר"
 
 #: admin/bbps-settings.php:58
 msgid "Display the users rank title below their gravatar?"
-msgstr ""
+msgstr "הצגת דירוג המשתמש מתחת לאווטאר"
 
 #: admin/bbps-settings.php:66
 msgid "not resolved"
@@ -109,13 +108,13 @@ msgstr ""
 
 #: admin/bbps-settings.php:68
 msgid "not a support question"
-msgstr ""
+msgstr "לא שאלת תמיכה"
 
 #: admin/bbps-settings.php:70
 msgid "This is the default status that will get displayed on all topics"
 msgstr ""
 
-#: admin/bbps-settings.php:77 includes/support-functions.php:258
+#: admin/bbps-settings.php:77
 msgid "Resolved"
 msgstr ""
 
@@ -125,7 +124,7 @@ msgstr ""
 
 #: admin/bbps-settings.php:91
 msgid "Not a support question"
-msgstr ""
+msgstr "לא שאלת תמיכה"
 
 #: admin/bbps-settings.php:98
 msgid "Allow the admin to update the topic status (recommended)."
@@ -147,7 +146,7 @@ msgstr ""
 
 #: includes/shortcodes.php:46
 msgid "Tickets:"
-msgstr ""
+msgstr "טיקטים:"
 
 #: includes/shortcodes.php:77
 #, php-format
@@ -158,22 +157,22 @@ msgstr ""
 #: includes/shortcodes.php:286 includes/shortcodes.php:315
 #: includes/shortcodes.php:344 includes/shortcodes.php:374
 msgid "Topic Title"
-msgstr ""
+msgstr "כותרת דיון"
 
 #: includes/shortcodes.php:81 includes/shortcodes.php:287
 #: includes/shortcodes.php:316
 msgid "Last Post By"
-msgstr ""
+msgstr "מגיב אחרון"
 
 #: includes/shortcodes.php:82 includes/shortcodes.php:253
 #: includes/shortcodes.php:288 includes/shortcodes.php:317
 #: includes/shortcodes.php:375
 msgid "Last Updated"
-msgstr ""
+msgstr "עדכון אחרון"
 
 #: includes/shortcodes.php:83 includes/shortcodes.php:377
 msgid "Post Count"
-msgstr ""
+msgstr "מספר פוסטים"
 
 #: includes/shortcodes.php:102
 msgid "This mod has no assigned tickets."
@@ -182,27 +181,27 @@ msgstr ""
 #: includes/shortcodes.php:237
 #, php-format
 msgid "Awaiting Your Response (%d)"
-msgstr ""
+msgstr "דיונים לטיפולך (%d)"
 
 #: includes/shortcodes.php:238
 #, php-format
 msgid "Your Open Tickets (%d)"
-msgstr ""
+msgstr "טיקטים בטיפול (%d)"
 
 #: includes/shortcodes.php:239
 #, php-format
 msgid "Unassigned Tickets (%d)"
-msgstr ""
+msgstr "טיקטים ללא רשומים (%d)"
 
 #: includes/shortcodes.php:240
 #, php-format
 msgid "No Replies (%d)"
-msgstr ""
+msgstr "אין תגובות (%d)"
 
 #: includes/shortcodes.php:241
 #, php-format
 msgid "Unresolved Tickets (%d)"
-msgstr ""
+msgstr "טיקטים לטיפול (%d)"
 
 #: includes/shortcodes.php:242
 msgid "Feature Requests"
@@ -210,11 +209,11 @@ msgstr ""
 
 #: includes/shortcodes.php:254
 msgid "Actions"
-msgstr ""
+msgstr "פעולות"
 
 #: includes/shortcodes.php:268
 msgid "Remove Pending Status"
-msgstr ""
+msgstr "מחיקת סטטוס בהמתנה"
 
 #: includes/shortcodes.php:277
 msgid ""
@@ -234,53 +233,39 @@ msgstr ""
 
 #: includes/shortcodes.php:345
 msgid "Posted"
-msgstr ""
+msgstr "נכתב"
 
 #: includes/shortcodes.php:346 includes/shortcodes.php:376
 msgid "Assignee"
-msgstr ""
+msgstr "רשומים"
 
 #: includes/shortcodes.php:359 includes/shortcodes.php:390
-#: includes/support-functions.php:178
 msgid "Unassigned"
-msgstr ""
+msgstr "אין רשומים"
 
 #: includes/shortcodes.php:365
 msgid "No tickets without replies, yay!"
 msgstr ""
 
-#: includes/support-functions.php:18
-msgid "This topic is:"
+#: includes/support-functions.php:417
+#, php-format
+msgid "Forum Role: %s"
 msgstr ""
 
-#: includes/support-functions.php:170
-msgid "Reassign topic to:"
-msgstr ""
+#: includes/support-functions.php:418
+#, php-format
+msgid "Topics Started: %s"
+msgstr "דיונים שנוצרו: %s"
 
-#: includes/support-functions.php:172
-msgid "Assign topic to:"
-msgstr ""
+#: includes/support-functions.php:419
+#, php-format
+msgid "Replies Created: %s"
+msgstr "תגובות שנוצרו: %s"
 
-#: includes/support-functions.php:207
-msgid "A forum topic has been assigned to you"
-msgstr ""
-
-#: includes/support-functions.php:225
-msgid "EDD Ticket Ping"
-msgstr ""
-
-#: includes/support-functions.php:346
-msgid "User's Purchases"
-msgstr ""
-
-#: includes/support-functions.php:359
-msgid "Licenses"
-msgstr ""
-
-#: includes/support-functions.php:371
-msgid "This user has never purchased anything."
+#: includes/support-functions.php:553 includes/support-functions.php:555
+msgid "Related Documentation"
 msgstr ""
 
 #: includes/widget-hours.php:14
 msgid "Forum Support Hours"
-msgstr ""
+msgstr "שעות פורום תמיכה"
