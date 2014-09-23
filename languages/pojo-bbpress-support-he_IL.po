@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pojo-bbpress-support 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-09-18 16:21+0300\n"
-"PO-Revision-Date: 2014-09-21 19:34+0200\n"
+"POT-Creation-Date: 2014-09-21 20:12+0300\n"
+"PO-Revision-Date: 2014-09-23 13:53+0200\n"
 "Last-Translator: Ariel K <a@arielk.net>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -82,13 +82,15 @@ msgstr "הצגת שם משתמש:"
 msgid ""
 "Enable and configure the settings for topic statuses these will be displayed "
 "on each topic"
-msgstr ""
+msgstr "הגדרות תצורה של פורומי התמיכה והרעיונות"
 
 #: admin/bbps-settings.php:43
 msgid ""
 "Enable and configure the settings for support forums, these options will be "
 "displayed on each topic within your support forums"
 msgstr ""
+"לאפשר ולהגדיר את הגדרות של פורום התמיכה, אפשרויות אלו יוצגו בכל דיון בפורום "
+"התמיכה"
 
 #: admin/bbps-settings.php:51
 msgid "Show the users post count below their gravatar?"
@@ -112,13 +114,14 @@ msgstr "לא שאלת תמיכה"
 
 #: admin/bbps-settings.php:70
 msgid "This is the default status that will get displayed on all topics"
-msgstr ""
+msgstr "זהו סטטוס ברירת מחדל שיוצג בכל הדיונים"
 
-#: admin/bbps-settings.php:77
+#: admin/bbps-settings.php:77 includes/support-functions.php:82
+#: includes/support-functions.php:256
 msgid "Resolved"
 msgstr ""
 
-#: admin/bbps-settings.php:84
+#: admin/bbps-settings.php:84 includes/support-functions.php:81
 msgid "Not Resolved"
 msgstr ""
 
@@ -136,7 +139,7 @@ msgstr "לאפשר לפותח הדיון לעדכן את הסטטוס של הד�
 
 #: admin/bbps-settings.php:112
 msgid "Allow the forum moderators to update the post status."
-msgstr ""
+msgstr "לאפשר למנהלי הפורום לעדכן סטטוס דיון."
 
 #: admin/bbps-settings.php:119
 msgid ""
@@ -232,7 +235,7 @@ msgstr ""
 
 #: includes/shortcodes.php:335 includes/shortcodes.php:397
 msgid "No unassigned tickets, yay!"
-msgstr ""
+msgstr "לא נמצאו טיקטים שאינם משוייכים, כל הכבוד!"
 
 #: includes/shortcodes.php:345
 msgid "Posted"
@@ -243,6 +246,7 @@ msgid "Assignee"
 msgstr "רשומים"
 
 #: includes/shortcodes.php:359 includes/shortcodes.php:390
+#: includes/support-functions.php:177
 msgid "Unassigned"
 msgstr "אין רשומים"
 
@@ -250,25 +254,61 @@ msgstr "אין רשומים"
 msgid "No tickets without replies, yay!"
 msgstr "לא נמצאו טיקטים ללא תגובות, הידד!"
 
-#: includes/support-functions.php:417
-#, php-format
-msgid "Forum Role: %s"
+#: includes/support-functions.php:18
+msgid "This topic is:"
+msgstr "דיון זה הינו:"
+
+#: includes/support-functions.php:77
+msgid "This topic is"
+msgstr "דיון זה הינו"
+
+#: includes/support-functions.php:83
+msgid "Not a Support Question"
+msgstr "לא שאלת תמיכה"
+
+#: includes/support-functions.php:86
+msgid "Update"
+msgstr "עדכון"
+
+#: includes/support-functions.php:169
+msgid "Reassign topic to:"
+msgstr "לשייך מחדש דיון אל:"
+
+#: includes/support-functions.php:171
+msgid "Assign topic to:"
+msgstr "לשייך דיון אל:"
+
+#: includes/support-functions.php:206
+msgid "A forum topic has been assigned to you"
+msgstr "דיון זה שויך אליך בפורום"
+
+#: includes/support-functions.php:224
+msgid "EDD Ticket Ping"
 msgstr ""
 
-#: includes/support-functions.php:418
-#, php-format
-msgid "Topics Started: %s"
-msgstr "דיונים שנוצרו: %s"
+#: includes/support-functions.php:344
+msgid "User's Purchases"
+msgstr "הרכישות של המשתמש"
 
-#: includes/support-functions.php:419
-#, php-format
-msgid "Replies Created: %s"
-msgstr "תגובות שנוצרו: %s"
+#: includes/support-functions.php:357
+msgid "Licenses"
+msgstr "רשיונות"
 
-#: includes/support-functions.php:553 includes/support-functions.php:555
-msgid "Related Documentation"
-msgstr ""
+#: includes/support-functions.php:369
+msgid "This user has never purchased anything."
+msgstr "משתמש זה לא רכש עדיין שום דבר באתר."
+
+#: includes/support-functions.php:413
+msgid ""
+"Please search the forums for existing questions before posting a new one."
+msgstr "אנא חפשו בפורום את שאלתכם לפני שאתם מפרסמים דיון חדש."
 
 #: includes/widget-hours.php:14
 msgid "Forum Support Hours"
 msgstr "שעות פורום תמיכה"
+
+#~ msgid "Topics Started: %s"
+#~ msgstr "דיונים שנוצרו: %s"
+
+#~ msgid "Replies Created: %s"
+#~ msgstr "תגובות שנוצרו: %s"
