@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: pojo-bbpress-support 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-09-23 14:54+0300\n"
-"PO-Revision-Date: 2014-09-23 15:40+0200\n"
-"Last-Translator: Yakir Sitbon <kingyes1@gmail.com>\n"
+"PO-Revision-Date: 2014-09-23 17:10+0200\n"
+"Last-Translator: Ariel K <a@arielk.net>\n"
 "Language-Team: Pojo Team <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.6.9\n"
+"X-Generator: Poedit 1.5.5\n"
 "Language: he_IL\n"
 
 #: admin/admin-functions.php:33 admin/bbps-admin.php:16
@@ -268,7 +268,7 @@ msgstr "נכתב"
 
 #: includes/shortcodes.php:348 includes/shortcodes.php:378
 msgid "Assignee"
-msgstr "רשומים"
+msgstr "אחראי תמיכה"
 
 #: includes/shortcodes.php:361 includes/shortcodes.php:392
 #: includes/support-functions.php:177
@@ -281,11 +281,11 @@ msgstr "לא נמצאו טיקטים ללא תגובות, הידד!"
 
 #: includes/support-functions.php:18
 msgid "This topic is:"
-msgstr "דיון זה הינו:"
+msgstr "דיון זה מוגדר:"
 
 #: includes/support-functions.php:77
 msgid "This topic is"
-msgstr "דיון זה הינו"
+msgstr "דיון זה מוגדר"
 
 #: includes/support-functions.php:83
 msgid "Not a Support Question"
@@ -301,15 +301,15 @@ msgstr "הטיקט משוייך ל:"
 
 #: includes/support-functions.php:142
 msgid "Assign"
-msgstr "משוייך"
+msgstr "לשייך"
 
 #: includes/support-functions.php:147
 msgid "Assign To Me"
-msgstr "שייך אלי"
+msgstr "שייך את הדיון אלי"
 
 #: includes/support-functions.php:169
 msgid "Reassign topic to:"
-msgstr "לשייך מחדש דיון אל:"
+msgstr "לשייך דיון מחדש:"
 
 #: includes/support-functions.php:171
 msgid "Assign topic to:"
@@ -338,7 +338,7 @@ msgstr "%s - פינג טיקט"
 
 #: includes/support-functions.php:237
 msgid "Ping Assignee"
-msgstr "שלח פינג למשוייכים"
+msgstr "שליחת פינג לאחראי תמיכה"
 
 #: includes/support-functions.php:341
 msgid "User's Purchases"
@@ -359,7 +359,7 @@ msgstr "אנא חפשו בפורום את שאלתכם לפני שאתם מפר�
 
 #: includes/widget-hours.php:14
 msgid "Forum Support Hours"
-msgstr "שעות פורום תמיכה"
+msgstr "שעות תמיכה בפורום"
 
 #~ msgid "Topics Started: %s"
 #~ msgstr "דיונים שנוצרו: %s"

@@ -78,7 +78,7 @@ function edd_bbp_d_dashboard_shortcode( $atts, $content = null ) {
 		ob_start(); ?>
 		<div class="bbp-tickets">
 			<?php if ( $assigned_tickets->have_posts() ) : ?>
-				<h4>><?php printf( __( 'Tickets assigned to %s', 'pojo-bbpress-support' ), $mod->display_name ); ?></h4>
+				<h4><a href="<?php echo get_permalink( pojo_get_option( 'pojo_support_panel_page_id' ) ); ?>" class="back-to-support-panel"><?php _e( 'Support Panel &raquo;', 'pojo-bbpress-support' ); ?></a> <?php printf( __( 'Tickets assigned to %s', 'pojo-bbpress-support' ), $mod->display_name ); ?></h4>
 					<table class="table table-striped" width="100%">
 						<tr>
 							<th width="35%"><?php _e( 'Topic Title', 'pojo-bbpress-support' ); ?></th>
@@ -103,7 +103,7 @@ function edd_bbp_d_dashboard_shortcode( $atts, $content = null ) {
 					<?php wp_reset_postdata(); ?>
 					</table>
 			<?php else : ?>
-				<div><?php _e( 'This mod has no assigned tickets.', 'pojo-bbpress-support' ); ?></div>
+				<div><?php _e( 'This moderator has no assigned tickets.', 'pojo-bbpress-support' ); ?></div>
 			<?php endif; ?>
 		</div>
 		<?php

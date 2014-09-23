@@ -18,6 +18,13 @@ class Pojo_Settings_Supports extends Pojo_Settings_Page_Base {
 			'title' => __( 'Features Forum', 'pojo-bbpress-support' ),
 			'std' => '0',
 		);
+
+		$fields[] = array(
+			'id' => 'pojo_support_panel_page_id',
+			'title' => __( 'Support Panel', 'pojo-bbpress-support' ),
+			'type' => Pojo_Settings::FIELD_SELECT_PAGES,
+			'std' => '0',
+		);
 		
 		$sections[] = array(
 			'id' => 'section-main-site',

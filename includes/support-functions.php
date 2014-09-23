@@ -415,3 +415,10 @@ function edd_bbp_d_new_topic_notice() {
 		echo '<div class="bbp-template-notice"><p>' . __( 'Please search the forums for existing questions before posting a new one.', 'pojo-bbpress-support' ) . '</p></div>';
 }
 add_action( 'bbp_template_notices', 'edd_bbp_d_new_topic_notice');
+
+function edd_bbp_pojo_after_page_title() {
+	if ( Pojo_Compatibility::is_bbpress_installed() && is_bbpress() ) :
+		echo '<a href="' . get_permalink( pojo_get_option( 'pojo_support_panel_page_id' ) ) . '" class="go-to-support-panel">' . __( 'Support Panel', 'pojo-bbpress-support' ) . '</a>';
+	endif;
+}
+add_action( 'pojo_after_page_title', 'edd_bbp_pojo_after_page_title' );
