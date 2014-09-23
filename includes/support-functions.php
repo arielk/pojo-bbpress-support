@@ -83,7 +83,7 @@ function edd_bbp_d_generate_status_options( $topic_id ) {
 			if ( isset( $dropdown_options['notsup'] ) ) {?><option value="3"<?php selected( $value, 3 ) ; ?>><?php _e( 'Not a Support Question', 'pojo-bbpress-support' ); ?></option><?php
 		} ?>
 		</select>
-		<input type="submit" value="<?php _e( 'Update', 'pojo-bbpress-support' ); ?>" name="bbps_support_submit" />
+		<input type="submit" class="button" value="<?php _e( 'Update', 'pojo-bbpress-support' ); ?>" name="bbps_support_submit" />
 		<input type="hidden" value="bbps_update_status" name="bbps_action"/>
 		<input type="hidden" value="<?php echo $topic_id ?>" name="bbps_topic_id" />
 	</form>
@@ -133,18 +133,18 @@ function edd_bbp_d_assign_topic_form() {
 			$user_login = $current_user->user_login;
 			if ( ! empty( $topic_assigned ) ) {
 				$assigned_user_name = edd_bbp_get_topic_assignee_name( $topic_assigned ); ?>
-				<div class='bbps-support-forums-message'> Topic assigned to: <?php echo $assigned_user_name; ?></div><?php
+				<div class='bbps-support-forums-message'> <?php _e( 'Topic assigned to:', 'pojo-bbpress-support' ); ?> <?php echo $assigned_user_name; ?></div><?php
 			}
 			?>
 			<div id ="bbps_support_topic_assign">
 				<form id="bbps-topic-assign" name="bbps_support_topic_assign" action="" method="post">
 					<?php edd_bbp_d_user_assign_dropdown(); ?>
-					<input type="submit" value="Assign" name="bbps_support_topic_assign" />
+					<input class="button" type="submit" value="<?php echo esc_attr( __( 'Assign', 'pojo-bbpress-support' ) ); ?>" name="bbps_support_topic_assign" />
 					<input type="hidden" value="bbps_assign_topic" name="bbps_action"/>
 					<input type="hidden" value="<?php echo $topic_id ?>" name="bbps_topic_id" />
 				</form>
 				<form id="bbs-topic-assign-me" name="bbps_support_topic_assign" action="" method="post">
-					<input type="submit" value="Assign To Me" name="bbps_support_topic_assign" />
+					<input class="button" type="submit" value="<?php echo esc_attr( __( 'Assign To Me', 'pojo-bbpress-support' ) ); ?>" name="bbps_support_topic_assign" />
 					<input type="hidden" value="<?php echo get_current_user_id(); ?>" name="bbps_assign_list" />
 					<input type="hidden" value="bbps_assign_topic" name="bbps_action"/>
 					<input type="hidden" value="<?php echo $topic_id ?>" name="bbps_topic_id" />
@@ -198,10 +198,8 @@ function edd_bbp_d_assign_topic() {
 		/*update the post meta with the assigned users id*/
 		$assigned = update_post_meta( $topic_id, 'bbps_topic_assigned', $user_id );
 		if ( $user_id != get_current_user_id() ) {
-			$message = <<< EMAILMSG
-		You have been assigned to the following topic, by another forum moderator or the site administrator. Please take a look at it when you get a chance.
-		$post_link
-EMAILMSG;
+			$message = __( 'You have been assigned to the following topic, by another forum moderator or the site administrator. Please take a look at it when you get a chance.', 'pojo-bbpress-support' );
+			$message .= PHP_EOL . $post_link;
 			if ( $assigned == true ) {
 				wp_mail( $user_email, __( 'A forum topic has been assigned to you', 'pojo-bbpress-support' ), $message );
 			}
@@ -214,14 +212,13 @@ function edd_bbp_d_ping_topic_assignee() {
 	$user_id  = get_post_meta( $topic_id, 'bbps_topic_assigned', true );
 
 	if ( $user_id ) {
-		$userinfo = get_userdata( $user_id );
+		$userinfo   = get_userdata( $user_id );
 		$user_email = $userinfo->user_email;
-		$post_link = get_permalink( $topic_id );
-		$message = <<< EMAILMSG
-		A ticket that has been assigned to you is in need of attention.
-		$post_link
-EMAILMSG;
-		wp_mail( $user_email, __( 'EDD Ticket Ping', 'pojo-bbpress-support' ), $message );
+		$post_link  = get_permalink( $topic_id );
+
+		$message = __( 'A ticket that has been assigned to you is in need of attention.', 'pojo-bbpress-support' );
+		$message .= PHP_EOL . $post_link;
+		wp_mail( $user_email, sprintf( __( '%s Ticket Ping', 'pojo-bbpress-support' ), get_bloginfo() ), $message );
 	}
 }
 
@@ -235,9 +232,9 @@ function edd_bbp_d_ping_asignee_button() {
 
 		if ( current_user_can( 'moderate' ) && $topic_assigned ) {
 ?>
-		<div id ="bbps_support_forum_ping">
+		<div id="bbps_support_forum_ping">
 			<form id="bbps-topic-ping" name="bbps_support_topic_ping" action="" method="post">
-				<input type="submit" class="edd-submit button" value="Ping Assignee" name="bbps_topic_ping_submit" />
+				<input type="submit" class="button" value="<?php echo esc_attr( __( 'Ping Assignee', 'pojo-bbpress-support' ) ); ?>" name="bbps_topic_ping_submit" />
 				<input type="hidden" value="bbps_ping_topic" name="bbps_action"/>
 				<input type="hidden" value="<?php echo $topic_id ?>" name="bbps_topic_id" />
 				<input type="hidden" value="<?php echo $forum_id ?>" name="bbp_old_forum_id" />

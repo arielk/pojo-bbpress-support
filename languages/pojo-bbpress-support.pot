@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pojo-bbpress-support 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-09-21 20:12+0300\n"
+"POT-Creation-Date: 2014-09-23 14:54+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -116,7 +116,7 @@ msgid "This is the default status that will get displayed on all topics"
 msgstr ""
 
 #: admin/bbps-settings.php:77 includes/support-functions.php:82
-#: includes/support-functions.php:256
+#: includes/support-functions.php:253
 msgid "Resolved"
 msgstr ""
 
@@ -146,107 +146,131 @@ msgid ""
 "administrators and forum moderators"
 msgstr ""
 
+#: includes/class-pojo-settings-supports.php:12
+msgid "Support Forum"
+msgstr ""
+
+#: includes/class-pojo-settings-supports.php:18
+msgid "Features Forum"
+msgstr ""
+
+#: includes/class-pojo-settings-supports.php:25
+msgid "Support Forums"
+msgstr ""
+
+#: includes/class-pojo-settings-supports.php:26
+msgid "Setup your forums IDs"
+msgstr ""
+
+#: includes/class-pojo-settings-supports.php:35
+msgid "Supports Settings"
+msgstr ""
+
+#: includes/class-pojo-settings-supports.php:36
+msgid "Supports"
+msgstr ""
+
 #: includes/shortcodes.php:46
 msgid "Tickets:"
 msgstr ""
 
-#: includes/shortcodes.php:77
+#: includes/shortcodes.php:79
 #, php-format
 msgid "Tickets assigned to %s"
 msgstr ""
 
-#: includes/shortcodes.php:80 includes/shortcodes.php:252
-#: includes/shortcodes.php:286 includes/shortcodes.php:315
-#: includes/shortcodes.php:344 includes/shortcodes.php:374
+#: includes/shortcodes.php:82 includes/shortcodes.php:254
+#: includes/shortcodes.php:288 includes/shortcodes.php:317
+#: includes/shortcodes.php:346 includes/shortcodes.php:376
 msgid "Topic Title"
 msgstr ""
 
-#: includes/shortcodes.php:81 includes/shortcodes.php:287
-#: includes/shortcodes.php:316
+#: includes/shortcodes.php:83 includes/shortcodes.php:289
+#: includes/shortcodes.php:318
 msgid "Last Post By"
 msgstr ""
 
-#: includes/shortcodes.php:82 includes/shortcodes.php:253
-#: includes/shortcodes.php:288 includes/shortcodes.php:317
-#: includes/shortcodes.php:375
+#: includes/shortcodes.php:84 includes/shortcodes.php:255
+#: includes/shortcodes.php:290 includes/shortcodes.php:319
+#: includes/shortcodes.php:377
 msgid "Last Updated"
 msgstr ""
 
-#: includes/shortcodes.php:83 includes/shortcodes.php:377
+#: includes/shortcodes.php:85 includes/shortcodes.php:379
 msgid "Post Count"
 msgstr ""
 
-#: includes/shortcodes.php:102
+#: includes/shortcodes.php:104
 msgid "This mod has no assigned tickets."
-msgstr ""
-
-#: includes/shortcodes.php:237
-#, php-format
-msgid "Awaiting Your Response (%d)"
-msgstr ""
-
-#: includes/shortcodes.php:238
-#, php-format
-msgid "Your Open Tickets (%d)"
 msgstr ""
 
 #: includes/shortcodes.php:239
 #, php-format
-msgid "Unassigned Tickets (%d)"
+msgid "Awaiting Your Response (%d)"
 msgstr ""
 
 #: includes/shortcodes.php:240
 #, php-format
-msgid "No Replies (%d)"
+msgid "Your Open Tickets (%d)"
 msgstr ""
 
 #: includes/shortcodes.php:241
 #, php-format
-msgid "Unresolved Tickets (%d)"
+msgid "Unassigned Tickets (%d)"
 msgstr ""
 
 #: includes/shortcodes.php:242
+#, php-format
+msgid "No Replies (%d)"
+msgstr ""
+
+#: includes/shortcodes.php:243
+#, php-format
+msgid "Unresolved Tickets (%d)"
+msgstr ""
+
+#: includes/shortcodes.php:244
 msgid "Feature Requests"
 msgstr ""
 
-#: includes/shortcodes.php:254
+#: includes/shortcodes.php:256
 msgid "Actions"
 msgstr ""
 
-#: includes/shortcodes.php:268
+#: includes/shortcodes.php:270
 msgid "Remove Pending Status"
 msgstr ""
 
-#: includes/shortcodes.php:277
+#: includes/shortcodes.php:279
 msgid ""
 "No tickets awaiting your reply. Excellent, now go grab some unresolved or "
 "unassigned tickets."
 msgstr ""
 
-#: includes/shortcodes.php:306
+#: includes/shortcodes.php:308
 msgid ""
 "No unresolved tickets, yay! Now go grab some unresolved or unassigned "
 "tickets."
 msgstr ""
 
-#: includes/shortcodes.php:335 includes/shortcodes.php:397
+#: includes/shortcodes.php:337 includes/shortcodes.php:399
 msgid "No unassigned tickets, yay!"
 msgstr ""
 
-#: includes/shortcodes.php:345
+#: includes/shortcodes.php:347
 msgid "Posted"
 msgstr ""
 
-#: includes/shortcodes.php:346 includes/shortcodes.php:376
+#: includes/shortcodes.php:348 includes/shortcodes.php:378
 msgid "Assignee"
 msgstr ""
 
-#: includes/shortcodes.php:359 includes/shortcodes.php:390
+#: includes/shortcodes.php:361 includes/shortcodes.php:392
 #: includes/support-functions.php:177
 msgid "Unassigned"
 msgstr ""
 
-#: includes/shortcodes.php:365
+#: includes/shortcodes.php:367
 msgid "No tickets without replies, yay!"
 msgstr ""
 
@@ -266,6 +290,18 @@ msgstr ""
 msgid "Update"
 msgstr ""
 
+#: includes/support-functions.php:136
+msgid "Topic assigned to:"
+msgstr ""
+
+#: includes/support-functions.php:142
+msgid "Assign"
+msgstr ""
+
+#: includes/support-functions.php:147
+msgid "Assign To Me"
+msgstr ""
+
 #: includes/support-functions.php:169
 msgid "Reassign topic to:"
 msgstr ""
@@ -274,27 +310,42 @@ msgstr ""
 msgid "Assign topic to:"
 msgstr ""
 
-#: includes/support-functions.php:206
+#: includes/support-functions.php:201
+msgid ""
+"You have been assigned to the following topic, by another forum moderator or "
+"the site administrator. Please take a look at it when you get a chance."
+msgstr ""
+
+#: includes/support-functions.php:204
 msgid "A forum topic has been assigned to you"
 msgstr ""
 
-#: includes/support-functions.php:224
-msgid "EDD Ticket Ping"
+#: includes/support-functions.php:219
+msgid "A ticket that has been assigned to you is in need of attention."
 msgstr ""
 
-#: includes/support-functions.php:344
+#: includes/support-functions.php:221
+#, php-format
+msgid "%s Ticket Ping"
+msgstr ""
+
+#: includes/support-functions.php:237
+msgid "Ping Assignee"
+msgstr ""
+
+#: includes/support-functions.php:341
 msgid "User's Purchases"
 msgstr ""
 
-#: includes/support-functions.php:357
+#: includes/support-functions.php:354
 msgid "Licenses"
 msgstr ""
 
-#: includes/support-functions.php:369
+#: includes/support-functions.php:366
 msgid "This user has never purchased anything."
 msgstr ""
 
-#: includes/support-functions.php:413
+#: includes/support-functions.php:410
 msgid ""
 "Please search the forums for existing questions before posting a new one."
 msgstr ""

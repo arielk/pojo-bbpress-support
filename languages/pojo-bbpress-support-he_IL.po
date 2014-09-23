@@ -7,14 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pojo-bbpress-support 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-09-21 20:12+0300\n"
-"PO-Revision-Date: 2014-09-23 13:53+0200\n"
-"Last-Translator: Ariel K <a@arielk.net>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"POT-Creation-Date: 2014-09-23 14:54+0300\n"
+"PO-Revision-Date: 2014-09-23 15:40+0200\n"
+"Last-Translator: Yakir Sitbon <kingyes1@gmail.com>\n"
+"Language-Team: Pojo Team <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.5.5\n"
+"X-Generator: Poedit 1.6.9\n"
+"Language: he_IL\n"
 
 #: admin/admin-functions.php:33 admin/bbps-admin.php:16
 msgid "Support Forum:"
@@ -117,7 +118,7 @@ msgid "This is the default status that will get displayed on all topics"
 msgstr "זהו סטטוס ברירת מחדל שיוצג בכל הדיונים"
 
 #: admin/bbps-settings.php:77 includes/support-functions.php:82
-#: includes/support-functions.php:256
+#: includes/support-functions.php:253
 msgid "Resolved"
 msgstr ""
 
@@ -147,78 +148,102 @@ msgid ""
 "administrators and forum moderators"
 msgstr "לאפשר למנהלי מערכת ומנהלי פורומים להקצות נושאים למנהלים אחרים"
 
+#: includes/class-pojo-settings-supports.php:12
+msgid "Support Forum"
+msgstr "פורום תמיכה"
+
+#: includes/class-pojo-settings-supports.php:18
+msgid "Features Forum"
+msgstr "פורום רעיונות"
+
+#: includes/class-pojo-settings-supports.php:25
+msgid "Support Forums"
+msgstr "פורומי תמיכה"
+
+#: includes/class-pojo-settings-supports.php:26
+msgid "Setup your forums IDs"
+msgstr "הגדרת ID של הפורום תמיכה והרעיונות"
+
+#: includes/class-pojo-settings-supports.php:35
+msgid "Supports Settings"
+msgstr "הגדרות תמיכה"
+
+#: includes/class-pojo-settings-supports.php:36
+msgid "Supports"
+msgstr "תמיכה"
+
 #: includes/shortcodes.php:46
 msgid "Tickets:"
 msgstr "טיקטים:"
 
-#: includes/shortcodes.php:77
+#: includes/shortcodes.php:79
 #, php-format
 msgid "Tickets assigned to %s"
 msgstr "הטיקטים המשוייכים ל%s"
 
-#: includes/shortcodes.php:80 includes/shortcodes.php:252
-#: includes/shortcodes.php:286 includes/shortcodes.php:315
-#: includes/shortcodes.php:344 includes/shortcodes.php:374
+#: includes/shortcodes.php:82 includes/shortcodes.php:254
+#: includes/shortcodes.php:288 includes/shortcodes.php:317
+#: includes/shortcodes.php:346 includes/shortcodes.php:376
 msgid "Topic Title"
 msgstr "כותרת דיון"
 
-#: includes/shortcodes.php:81 includes/shortcodes.php:287
-#: includes/shortcodes.php:316
+#: includes/shortcodes.php:83 includes/shortcodes.php:289
+#: includes/shortcodes.php:318
 msgid "Last Post By"
 msgstr "מגיב אחרון"
 
-#: includes/shortcodes.php:82 includes/shortcodes.php:253
-#: includes/shortcodes.php:288 includes/shortcodes.php:317
-#: includes/shortcodes.php:375
+#: includes/shortcodes.php:84 includes/shortcodes.php:255
+#: includes/shortcodes.php:290 includes/shortcodes.php:319
+#: includes/shortcodes.php:377
 msgid "Last Updated"
 msgstr "עדכון אחרון"
 
-#: includes/shortcodes.php:83 includes/shortcodes.php:377
+#: includes/shortcodes.php:85 includes/shortcodes.php:379
 msgid "Post Count"
 msgstr "מספר פוסטים"
 
-#: includes/shortcodes.php:102
+#: includes/shortcodes.php:104
 msgid "This mod has no assigned tickets."
 msgstr ""
 
-#: includes/shortcodes.php:237
+#: includes/shortcodes.php:239
 #, php-format
 msgid "Awaiting Your Response (%d)"
 msgstr "דיונים לטיפולך (%d)"
 
-#: includes/shortcodes.php:238
+#: includes/shortcodes.php:240
 #, php-format
 msgid "Your Open Tickets (%d)"
 msgstr "טיקטים בטיפול (%d)"
 
-#: includes/shortcodes.php:239
+#: includes/shortcodes.php:241
 #, php-format
 msgid "Unassigned Tickets (%d)"
 msgstr "טיקטים ללא רשומים (%d)"
 
-#: includes/shortcodes.php:240
+#: includes/shortcodes.php:242
 #, php-format
 msgid "No Replies (%d)"
 msgstr "אין תגובות (%d)"
 
-#: includes/shortcodes.php:241
+#: includes/shortcodes.php:243
 #, php-format
 msgid "Unresolved Tickets (%d)"
 msgstr "טיקטים לטיפול (%d)"
 
-#: includes/shortcodes.php:242
+#: includes/shortcodes.php:244
 msgid "Feature Requests"
 msgstr "בקשות ורעיונות"
 
-#: includes/shortcodes.php:254
+#: includes/shortcodes.php:256
 msgid "Actions"
 msgstr "פעולות"
 
-#: includes/shortcodes.php:268
+#: includes/shortcodes.php:270
 msgid "Remove Pending Status"
 msgstr "מחיקת סטטוס בהמתנה"
 
-#: includes/shortcodes.php:277
+#: includes/shortcodes.php:279
 msgid ""
 "No tickets awaiting your reply. Excellent, now go grab some unresolved or "
 "unassigned tickets."
@@ -226,31 +251,31 @@ msgstr ""
 "לא מחכים לך טיקטים לטיפול. מצויין, עכשיו אפשר לטפל בדיונים שעדיין אינם "
 "בטיפול."
 
-#: includes/shortcodes.php:306
+#: includes/shortcodes.php:308
 msgid ""
 "No unresolved tickets, yay! Now go grab some unresolved or unassigned "
 "tickets."
 msgstr ""
 "לא נמצאו טיקטים לא פתורים, הידד! עכשיו אפשר לטפל בדיונים שעדיין אינם בטיפול."
 
-#: includes/shortcodes.php:335 includes/shortcodes.php:397
+#: includes/shortcodes.php:337 includes/shortcodes.php:399
 msgid "No unassigned tickets, yay!"
 msgstr "לא נמצאו טיקטים שאינם משוייכים, כל הכבוד!"
 
-#: includes/shortcodes.php:345
+#: includes/shortcodes.php:347
 msgid "Posted"
 msgstr "נכתב"
 
-#: includes/shortcodes.php:346 includes/shortcodes.php:376
+#: includes/shortcodes.php:348 includes/shortcodes.php:378
 msgid "Assignee"
 msgstr "רשומים"
 
-#: includes/shortcodes.php:359 includes/shortcodes.php:390
+#: includes/shortcodes.php:361 includes/shortcodes.php:392
 #: includes/support-functions.php:177
 msgid "Unassigned"
 msgstr "אין רשומים"
 
-#: includes/shortcodes.php:365
+#: includes/shortcodes.php:367
 msgid "No tickets without replies, yay!"
 msgstr "לא נמצאו טיקטים ללא תגובות, הידד!"
 
@@ -270,6 +295,18 @@ msgstr "לא שאלת תמיכה"
 msgid "Update"
 msgstr "עדכון"
 
+#: includes/support-functions.php:136
+msgid "Topic assigned to:"
+msgstr "הטיקט משוייך ל:"
+
+#: includes/support-functions.php:142
+msgid "Assign"
+msgstr "משוייך"
+
+#: includes/support-functions.php:147
+msgid "Assign To Me"
+msgstr "שייך אלי"
+
 #: includes/support-functions.php:169
 msgid "Reassign topic to:"
 msgstr "לשייך מחדש דיון אל:"
@@ -278,27 +315,44 @@ msgstr "לשייך מחדש דיון אל:"
 msgid "Assign topic to:"
 msgstr "לשייך דיון אל:"
 
-#: includes/support-functions.php:206
+#: includes/support-functions.php:201
+msgid ""
+"You have been assigned to the following topic, by another forum moderator or "
+"the site administrator. Please take a look at it when you get a chance."
+msgstr ""
+"אחד ממנהלי הפורום שייך אותך לדיון זה. קח את הזמן ותבדוק איך אתה יכול לעזור "
+"בדיון הזה."
+
+#: includes/support-functions.php:204
 msgid "A forum topic has been assigned to you"
 msgstr "דיון זה שויך אליך בפורום"
 
-#: includes/support-functions.php:224
-msgid "EDD Ticket Ping"
-msgstr ""
+#: includes/support-functions.php:219
+msgid "A ticket that has been assigned to you is in need of attention."
+msgstr "טיקט ששוייך לך זקוק לתשומת לב נוספת."
 
-#: includes/support-functions.php:344
+#: includes/support-functions.php:221
+#, php-format
+msgid "%s Ticket Ping"
+msgstr "%s - פינג טיקט"
+
+#: includes/support-functions.php:237
+msgid "Ping Assignee"
+msgstr "שלח פינג למשוייכים"
+
+#: includes/support-functions.php:341
 msgid "User's Purchases"
 msgstr "הרכישות של המשתמש"
 
-#: includes/support-functions.php:357
+#: includes/support-functions.php:354
 msgid "Licenses"
 msgstr "רשיונות"
 
-#: includes/support-functions.php:369
+#: includes/support-functions.php:366
 msgid "This user has never purchased anything."
 msgstr "משתמש זה לא רכש עדיין שום דבר באתר."
 
-#: includes/support-functions.php:413
+#: includes/support-functions.php:410
 msgid ""
 "Please search the forums for existing questions before posting a new one."
 msgstr "אנא חפשו בפורום את שאלתכם לפני שאתם מפרסמים דיון חדש."

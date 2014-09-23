@@ -23,7 +23,7 @@ class Pojo_Settings_Supports extends Pojo_Settings_Page_Base {
 			'id' => 'section-main-site',
 			'page' => 'bbpress',
 			'title' => __( 'Support Forums', 'pojo-bbpress-support' ),
-			'intro' => '',
+			'intro' => __( 'Setup your forums IDs', 'pojo-bbpress-support' ),
 			'fields' => $fields,
 		);
 
