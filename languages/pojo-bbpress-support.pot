@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pojo-bbpress-support 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-09-23 20:21+0300\n"
+"POT-Creation-Date: 2014-09-23 21:12+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -154,19 +154,24 @@ msgstr ""
 msgid "Features Forum"
 msgstr ""
 
-#: includes/class-pojo-settings-supports.php:25
+#: includes/class-pojo-settings-supports.php:24
+#: includes/support-functions.php:421
+msgid "Support Panel"
+msgstr ""
+
+#: includes/class-pojo-settings-supports.php:32
 msgid "Support Forums"
 msgstr ""
 
-#: includes/class-pojo-settings-supports.php:26
+#: includes/class-pojo-settings-supports.php:33
 msgid "Setup your forums IDs"
 msgstr ""
 
-#: includes/class-pojo-settings-supports.php:35
+#: includes/class-pojo-settings-supports.php:42
 msgid "Supports Settings"
 msgstr ""
 
-#: includes/class-pojo-settings-supports.php:36
+#: includes/class-pojo-settings-supports.php:43
 msgid "Supports"
 msgstr ""
 
@@ -353,10 +358,6 @@ msgstr ""
 #: includes/support-functions.php:415
 msgid ""
 "Please search the forums for existing questions before posting a new one."
-msgstr ""
-
-#: includes/support-functions.php:421
-msgid "Support Panel"
 msgstr ""
 
 #: includes/widget-hours.php:14
