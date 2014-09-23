@@ -21,8 +21,8 @@ class Pojo_Settings_Supports extends Pojo_Settings_Page_Base {
 		
 		$sections[] = array(
 			'id' => 'section-main-site',
-			'page' => $this->_page_id,
-			'title' => __( 'Pages:', 'pojo-bbpress-support' ),
+			'page' => 'bbpress',
+			'title' => __( 'Support Forums', 'pojo-bbpress-support' ),
 			'intro' => '',
 			'fields' => $fields,
 		);
@@ -39,7 +39,7 @@ class Pojo_Settings_Supports extends Pojo_Settings_Page_Base {
 
 		add_filter( 'pojo_register_settings_sections', array( &$this, 'section_pages' ), 100 );
 
-		parent::__construct( $priority );
+		//parent::__construct( $priority );
 	}
 
 }
