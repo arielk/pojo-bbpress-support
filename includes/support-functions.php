@@ -10,13 +10,15 @@ function edd_bbp_d_add_support_forum_features() {
 		$topic_id = bbp_get_topic_id();
 		$status = edd_bbp_d_get_topic_status( $topic_id );
 	?>
-	<div id="edd_bbp_d_support_forum_options" style="width: 100%;clear:both;">
-		<?php
-		if ( current_user_can( 'moderate' ) ) {
-			edd_bbp_d_generate_status_options( $topic_id, $status );
-		} else { ?>
-			<?php _e( 'This topic is:', 'pojo-bbpress-support' ); ?> <?php echo $status; ?>
-		<?php } ?>
+	<div id="bbps_support_forum_status" class="bbps-topic-options">
+		<div class="bbps-topic-options-inner">
+			<?php
+			if ( current_user_can( 'moderate' ) ) {
+				edd_bbp_d_generate_status_options( $topic_id, $status );
+			} else { ?>
+				<?php _e( 'This topic is:', 'pojo-bbpress-support' ); ?> <?php echo $status; ?>
+			<?php } ?>
+		</div>
 	</div>
 	<?php
 	}
@@ -31,7 +33,6 @@ function edd_bbp_d_get_all_mods() {
 	$moderators = $wp_user_search->get_results();
 
 	return array_merge( $moderators, $admins );
-
 }
 
 
@@ -128,29 +129,31 @@ function edd_bbp_d_assign_topic_form() {
 		global $current_user;
 		get_currentuserinfo();
 		?>
-		<div id="bbps_support_forum_options">
-			<?php
-			$user_login = $current_user->user_login;
-			if ( ! empty( $topic_assigned ) ) {
-				$assigned_user_name = edd_bbp_get_topic_assignee_name( $topic_assigned ); ?>
-				<div class='bbps-support-forums-message'> <?php _e( 'Topic assigned to:', 'pojo-bbpress-support' ); ?> <?php echo $assigned_user_name; ?></div><?php
-			}
-			?>
-			<div id ="bbps_support_topic_assign">
-				<form id="bbps-topic-assign" name="bbps_support_topic_assign" action="" method="post">
-					<?php edd_bbp_d_user_assign_dropdown(); ?>
-					<input class="button" type="submit" value="<?php echo esc_attr( __( 'Assign', 'pojo-bbpress-support' ) ); ?>" name="bbps_support_topic_assign" />
-					<input type="hidden" value="bbps_assign_topic" name="bbps_action"/>
-					<input type="hidden" value="<?php echo $topic_id ?>" name="bbps_topic_id" />
-				</form>
-				<form id="bbs-topic-assign-me" name="bbps_support_topic_assign" action="" method="post">
-					<input class="button" type="submit" value="<?php echo esc_attr( __( 'Assign To Me', 'pojo-bbpress-support' ) ); ?>" name="bbps_support_topic_assign" />
-					<input type="hidden" value="<?php echo get_current_user_id(); ?>" name="bbps_assign_list" />
-					<input type="hidden" value="bbps_assign_topic" name="bbps_action"/>
-					<input type="hidden" value="<?php echo $topic_id ?>" name="bbps_topic_id" />
-				</form>
+		<div id="bbps_support_forum_options" class="bbps-topic-options">
+			<div class="bbps-topic-options-inner">
+				<?php
+				$user_login = $current_user->user_login;
+				if ( ! empty( $topic_assigned ) ) {
+					$assigned_user_name = edd_bbp_get_topic_assignee_name( $topic_assigned ); ?>
+					<div class="bbps-support-forums-message pojo-inline-block"><?php _e( 'Topic assigned to:', 'pojo-bbpress-support' ); ?> <?php echo $assigned_user_name; ?></div><?php
+				}
+				?>
+				<div id="bbps_support_topic_assign" class="pojo-inline-block">
+					<form id="bbps-topic-assign" class="pojo-inline-block" name="bbps_support_topic_assign" action="" method="post">
+						<?php edd_bbp_d_user_assign_dropdown(); ?>
+						<input class="button" type="submit" value="<?php echo esc_attr( __( 'Assign', 'pojo-bbpress-support' ) ); ?>" name="bbps_support_topic_assign" />
+						<input type="hidden" value="bbps_assign_topic" name="bbps_action"/>
+						<input type="hidden" value="<?php echo $topic_id ?>" name="bbps_topic_id" />
+					</form>
+					<form id="bbs-topic-assign-me" class="pojo-inline-block" name="bbps_support_topic_assign" action="" method="post">
+						<input class="button" type="submit" value="<?php echo esc_attr( __( 'Assign To Me', 'pojo-bbpress-support' ) ); ?>" name="bbps_support_topic_assign" />
+						<input type="hidden" value="<?php echo get_current_user_id(); ?>" name="bbps_assign_list" />
+						<input type="hidden" value="bbps_assign_topic" name="bbps_action"/>
+						<input type="hidden" value="<?php echo $topic_id ?>" name="bbps_topic_id" />
+					</form>
+				</div>
 			</div>
-		</div><!-- /#bbps_support_forum_options -->
+		</div>
 		<?php
 	}
 
@@ -232,13 +235,15 @@ function edd_bbp_d_ping_asignee_button() {
 
 		if ( current_user_can( 'moderate' ) && $topic_assigned ) {
 ?>
-		<div id="bbps_support_forum_ping">
-			<form id="bbps-topic-ping" name="bbps_support_topic_ping" action="" method="post">
-				<input type="submit" class="button" value="<?php echo esc_attr( __( 'Ping Assignee', 'pojo-bbpress-support' ) ); ?>" name="bbps_topic_ping_submit" />
-				<input type="hidden" value="bbps_ping_topic" name="bbps_action"/>
-				<input type="hidden" value="<?php echo $topic_id ?>" name="bbps_topic_id" />
-				<input type="hidden" value="<?php echo $forum_id ?>" name="bbp_old_forum_id" />
-			</form>
+		<div id="bbps_support_forum_ping" class="bbps-topic-options">
+			<div class="bbps-topic-options-inner">
+				<form id="bbps-topic-ping" name="bbps_support_topic_ping" action="" method="post">
+					<input type="submit" class="button" value="<?php echo esc_attr( __( 'Ping Assignee', 'pojo-bbpress-support' ) ); ?>" name="bbps_topic_ping_submit" />
+					<input type="hidden" value="bbps_ping_topic" name="bbps_action"/>
+					<input type="hidden" value="<?php echo $topic_id ?>" name="bbps_topic_id" />
+					<input type="hidden" value="<?php echo $forum_id ?>" name="bbp_old_forum_id" />
+				</form>
+			</div>
 		</div>
 		<?php
 		}
