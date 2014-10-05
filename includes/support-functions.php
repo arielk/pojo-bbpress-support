@@ -12,8 +12,7 @@ function edd_bbp_d_add_support_forum_features() {
 	?>
 	<div id="bbps_support_forum_status" class="bbps-topic-options">
 		<div class="bbps-topic-options-inner">
-			<?php
-			if ( current_user_can( 'moderate' ) ) :
+			<?php if ( current_user_can( 'moderate' ) ) :
 				edd_bbp_d_generate_status_options( $topic_id, $status );
 			else : ?>
 				<?php _e( 'This topic is:', 'pojo-bbpress-support' ); ?> <?php echo $status; ?>
