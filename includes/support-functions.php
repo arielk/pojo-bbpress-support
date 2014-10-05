@@ -8,16 +8,16 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 function edd_bbp_d_add_support_forum_features() {
 	if ( edd_bbp_d_is_support_forum( bbp_get_forum_id() ) ) {
 		$topic_id = bbp_get_topic_id();
-		$status = edd_bbp_d_get_topic_status( $topic_id );
+		$status   = edd_bbp_d_get_topic_status( $topic_id );
 	?>
 	<div id="bbps_support_forum_status" class="bbps-topic-options">
 		<div class="bbps-topic-options-inner">
 			<?php
-			if ( current_user_can( 'moderate' ) ) {
+			if ( current_user_can( 'moderate' ) ) :
 				edd_bbp_d_generate_status_options( $topic_id, $status );
-			} else { ?>
+			else : ?>
 				<?php _e( 'This topic is:', 'pojo-bbpress-support' ); ?> <?php echo $status; ?>
-			<?php } ?>
+			<?php endif; ?>
 		</div>
 	</div>
 	<?php
