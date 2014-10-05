@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: pojo-bbpress-support 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-09-23 21:12+0300\n"
-"PO-Revision-Date: 2014-09-23 21:19+0200\n"
-"Last-Translator: Ariel Klikstein <a@arielk.net>\n"
+"PO-Revision-Date: 2014-10-05 13:19+0200\n"
+"Last-Translator: Ariel K <a@arielk.net>\n"
 "Language-Team: Pojo Team <LL@li.org>\n"
 "Language: he_IL\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.5.4\n"
+"X-Generator: Poedit 1.5.5\n"
 
 #: admin/admin-functions.php:33 admin/bbps-admin.php:16
 msgid "Support Forum:"
@@ -103,11 +103,11 @@ msgstr "הצגת דירוג המשתמש מתחת לאווטאר"
 
 #: admin/bbps-settings.php:66
 msgid "not resolved"
-msgstr ""
+msgstr "פתוח"
 
 #: admin/bbps-settings.php:67
 msgid "resolved"
-msgstr ""
+msgstr "סגור"
 
 #: admin/bbps-settings.php:68
 msgid "not a support question"
@@ -120,11 +120,11 @@ msgstr "זהו סטטוס ברירת מחדל שיוצג בכל הדיונים"
 #: admin/bbps-settings.php:77 includes/support-functions.php:83
 #: includes/support-functions.php:258
 msgid "Resolved"
-msgstr ""
+msgstr "סגור"
 
 #: admin/bbps-settings.php:84 includes/support-functions.php:82
 msgid "Not Resolved"
-msgstr ""
+msgstr "פתוח"
 
 #: admin/bbps-settings.php:91
 msgid "Not a support question"
