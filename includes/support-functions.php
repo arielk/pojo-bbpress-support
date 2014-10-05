@@ -46,14 +46,14 @@ function edd_bbp_d_get_topic_status( $topic_id ) {
 		$switch = $default;
 
 	switch ( $switch ) {
-		case 1:
-			return "not resolved";
+		case 1 :
+			return 'not resolved';
 			break;
-		case 2:
-			return "resolved";
+		case 2 :
+			return 'resolved';
 			break;
-		case 3:
-			return "not a support question";
+		case 3 :
+			return 'not a support question';
 			break;
 	}
 }
