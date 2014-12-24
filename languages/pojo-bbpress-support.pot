@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pojo-bbpress-support 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-09-23 21:12+0300\n"
+"POT-Creation-Date: 2014-12-24 16:16+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -115,12 +115,12 @@ msgstr ""
 msgid "This is the default status that will get displayed on all topics"
 msgstr ""
 
-#: admin/bbps-settings.php:77 includes/support-functions.php:83
-#: includes/support-functions.php:258
+#: admin/bbps-settings.php:77 includes/support-functions.php:81
+#: includes/support-functions.php:257
 msgid "Resolved"
 msgstr ""
 
-#: admin/bbps-settings.php:84 includes/support-functions.php:82
+#: admin/bbps-settings.php:84 includes/support-functions.php:80
 msgid "Not Resolved"
 msgstr ""
 
@@ -155,7 +155,7 @@ msgid "Features Forum"
 msgstr ""
 
 #: includes/class-pojo-settings-supports.php:24
-#: includes/support-functions.php:421
+#: includes/support-functions.php:420
 msgid "Support Panel"
 msgstr ""
 
@@ -276,7 +276,7 @@ msgid "Assignee"
 msgstr ""
 
 #: includes/shortcodes.php:357 includes/shortcodes.php:388
-#: includes/support-functions.php:180
+#: includes/support-functions.php:178
 msgid "Unassigned"
 msgstr ""
 
@@ -284,78 +284,79 @@ msgstr ""
 msgid "No tickets without replies, yay!"
 msgstr ""
 
-#: includes/support-functions.php:19
+#: includes/support-functions.php:18
 msgid "This topic is:"
 msgstr ""
 
-#: includes/support-functions.php:78
+#: includes/support-functions.php:76
 msgid "This topic is"
 msgstr ""
 
-#: includes/support-functions.php:84
+#: includes/support-functions.php:82
 msgid "Not a Support Question"
 msgstr ""
 
-#: includes/support-functions.php:87
+#: includes/support-functions.php:85
 msgid "Update"
 msgstr ""
 
-#: includes/support-functions.php:138
+#: includes/support-functions.php:136
 msgid "Topic assigned to:"
 msgstr ""
 
-#: includes/support-functions.php:144
+#: includes/support-functions.php:142
 msgid "Assign"
 msgstr ""
 
-#: includes/support-functions.php:149
+#: includes/support-functions.php:147
 msgid "Assign To Me"
 msgstr ""
 
-#: includes/support-functions.php:172
+#: includes/support-functions.php:170
 msgid "Reassign topic to:"
 msgstr ""
 
-#: includes/support-functions.php:174
+#: includes/support-functions.php:172
 msgid "Assign topic to:"
 msgstr ""
 
-#: includes/support-functions.php:204
+#: includes/support-functions.php:203
+#, php-format
 msgid ""
-"You have been assigned to the following topic, by another forum moderator or "
-"the site administrator. Please take a look at it when you get a chance."
+"You have been assigned to the following topic, by %s. Please take a look at "
+"it when you get a chance."
 msgstr ""
 
-#: includes/support-functions.php:207
+#: includes/support-functions.php:206
 msgid "A forum topic has been assigned to you"
 msgstr ""
 
-#: includes/support-functions.php:222
+#: includes/support-functions.php:221
 msgid "A ticket that has been assigned to you is in need of attention."
 msgstr ""
 
-#: includes/support-functions.php:224
+#: includes/support-functions.php:223
 #, php-format
 msgid "%s Ticket Ping"
 msgstr ""
 
-#: includes/support-functions.php:241
+#: includes/support-functions.php:240
 msgid "Ping Assignee"
 msgstr ""
 
-#: includes/support-functions.php:346
+#: includes/support-functions.php:345
 msgid "User's Purchases"
 msgstr ""
 
-#: includes/support-functions.php:359
+#: includes/support-functions.php:358
 msgid "Licenses"
 msgstr ""
 
-#: includes/support-functions.php:371
+#: includes/support-functions.php:370
 msgid "This user has never purchased anything."
 msgstr ""
 
-#: includes/support-functions.php:415
+#: includes/support-functions.php:414
 msgid ""
 "Please search the forums for existing questions before posting a new one."
 msgstr ""

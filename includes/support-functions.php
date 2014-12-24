@@ -25,15 +25,14 @@ function edd_bbp_d_add_support_forum_features() {
 add_action( 'bbp_template_before_single_topic', 'edd_bbp_d_add_support_forum_features' );
 
 function edd_bbp_d_get_all_mods() {
-	$wp_user_search = new WP_User_Query( array( 'role' => 'administrator' ) );
+	$wp_user_search = new WP_User_Query( array( 'role' => 'administrator', 'blog_id' => 1 ) );
 	$admins = $wp_user_search->get_results();
 
 	$wp_user_search = new WP_User_Query( array( 'role' => 'bbp_moderator' ) );
 	$moderators = $wp_user_search->get_results();
-
+	
 	return array_merge( $moderators, $admins );
 }
-
 
 function edd_bbp_d_get_topic_status( $topic_id ) {
 	$default = get_option( '_bbps_default_status' );
@@ -200,7 +199,8 @@ function edd_bbp_d_assign_topic() {
 		/*update the post meta with the assigned users id*/
 		$assigned = update_post_meta( $topic_id, 'bbps_topic_assigned', $user_id );
 		if ( $user_id != get_current_user_id() ) {
-			$message = __( 'You have been assigned to the following topic, by another forum moderator or the site administrator. Please take a look at it when you get a chance.', 'pojo-bbpress-support' );
+			$current_user = get_userdata( get_current_user_id() );
+			$message = sprintf( __( 'You have been assigned to the following topic, by %s. Please take a look at it when you get a chance.', 'pojo-bbpress-support' ), $current_user->display_name );
 			$message .= PHP_EOL . $post_link;
 			if ( $assigned == true ) {
 				wp_mail( $user_email, __( 'A forum topic has been assigned to you', 'pojo-bbpress-support' ), $message );
