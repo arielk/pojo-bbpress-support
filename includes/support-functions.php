@@ -30,8 +30,20 @@ function edd_bbp_d_get_all_mods() {
 
 	$wp_user_search = new WP_User_Query( array( 'role' => 'bbp_moderator' ) );
 	$moderators = $wp_user_search->get_results();
+
+	$wp_user_search = new WP_User_Query( array( 'role' => 'bbp_keymaster' ) );
+	$keymasters = $wp_user_search->get_results();
 	
-	return array_merge( $moderators, $admins );
+	$return = $users = array();
+	foreach ( array_merge( $moderators, $keymasters, $admins ) as $user ) {
+		if ( in_array( $user->ID, $users ) )
+			continue;
+		
+		$users[] = $user->ID;
+		$return[] = $user;
+	}
+	
+	return $return;
 }
 
 function edd_bbp_d_get_topic_status( $topic_id ) {
