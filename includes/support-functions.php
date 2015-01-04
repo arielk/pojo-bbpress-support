@@ -355,6 +355,7 @@ function edd_bbp_d_add_user_purchases_link() {
 
 	echo '<div class="edd_users_purchases">';
 	echo '<h4>' . __( 'User\'s Purchases', 'pojo-bbpress-support' ) . ':</h4>';
+	switch_to_blog( 1 );
 	$purchases = edd_get_users_purchases( $user_email, 100, false, 'any' );
 	if ( $purchases ) :
 		echo '<ul>';
@@ -382,6 +383,8 @@ function edd_bbp_d_add_user_purchases_link() {
 		echo '<p>' . __( 'This user has never purchased anything.', 'pojo-bbpress-support' ) . '</p>';
 	endif;
 	echo '</div>';
+	
+	restore_current_blog();
 }
 add_action( 'bbp_template_after_user_profile', 'edd_bbp_d_add_user_purchases_link' );
 
