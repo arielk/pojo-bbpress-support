@@ -260,7 +260,7 @@ function edd_bbp_d_dashboard_shortcode( $atts, $content = null ) {
 								<?php $parent = get_post_field( 'post_parent', get_the_ID() ); ?>
 								<?php $row_class = ( $parent == 499 ) ? 'danger' : ''; ?>
 								<?php $remove_url = add_query_arg( array( 'topic_id' => get_the_ID(), 'bbps_action' => 'remove_pending' ) ); ?>
-								<tr class = "<?php echo $row_class; ?>">
+								<tr class="<?php echo $row_class; ?>">
 									<td>
 										<input type="checkbox" name="tickets[]" value="<?php echo esc_attr( get_the_ID() ); ?>"/>
 									</td>
@@ -273,7 +273,7 @@ function edd_bbp_d_dashboard_shortcode( $atts, $content = null ) {
 							<?php endwhile; ?>
 						</table>
 						<input type="hidden" name="edd_action" value="remove_ticket_pending_status"/>
-						<input type="submit" value="Remove Pending Status" class="button size-large"/>
+						<input type="submit" value="<?php _e( 'Remove Pending Status', 'pojo-bbpress-support' ); ?>" class="button size-large"/>
 						<?php wp_reset_postdata(); ?>
 					</form>
 				<?php else : ?>
@@ -284,18 +284,21 @@ function edd_bbp_d_dashboard_shortcode( $atts, $content = null ) {
 		<div class="tab-pane fade" id="your-tickets">
 			<div class="bbp-tickets">
 				<?php if ( $assigned_tickets->have_posts() ) : ?>
+				<form class="form-table" method="post">
 					<table class="table table-striped" width="100%">
 						<tr>
+							<th width="10%"></th>
 							<th width="40%"><?php _e( 'Topic Title', 'pojo-bbpress-support' ); ?></th>
-							<th width="30%"><?php _e( 'Last Post By', 'pojo-bbpress-support' ); ?></th>
-							<th width="30%"><?php _e( 'Last Updated', 'pojo-bbpress-support' ); ?></th>
+							<th width="25%"><?php _e( 'Last Post By', 'pojo-bbpress-support' ); ?></th>
+							<th width="25%"><?php _e( 'Last Updated', 'pojo-bbpress-support' ); ?></th>
 						</tr>
 						<?php while( $assigned_tickets->have_posts() ) : $assigned_tickets->the_post(); ?>
 							<?php $parent = get_post_field( 'post_parent', get_the_ID() ); ?>
 							<?php $row_class = ( $parent == 499 ) ? 'danger' : ''; ?>
 							<?php $last_reply_id = bbp_get_topic_last_reply_id( get_the_ID() ); ?>
 							<?php $last_reply_data = get_post( $last_reply_id ); ?>
-							<tr class = "<?php echo $row_class; ?>">
+							<tr class="""<?php echo $row_class; ?>">
+								<td><input type="checkbox" name="tickets[]" value="<?php echo esc_attr( get_the_ID() ); ?>"/></td>
 								<td>
 								<a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
 								</td>
@@ -303,8 +306,11 @@ function edd_bbp_d_dashboard_shortcode( $atts, $content = null ) {
 								<td><?php bbp_topic_freshness_link( get_the_ID() ); ?></td>
 							</tr>
 						<?php endwhile; ?>
-					<?php wp_reset_postdata(); ?>
 					</table>
+					<input type="hidden" name="edd_action" value="pbbp_close_tickets"/>
+					<input type="submit" value="<?php _e( 'Close Tickets', 'pojo-bbpress-support' ); ?>" class="button size-large"/>
+					<?php wp_reset_postdata(); ?>
+				</form>
 				<?php else : ?>
 					<li><?php _e( 'No unresolved tickets, yay! Now go grab some unresolved or unassigned tickets.', 'pojo-bbpress-support' ); ?></li>
 				<?php endif; ?>
