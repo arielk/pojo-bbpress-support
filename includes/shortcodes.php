@@ -54,6 +54,7 @@ function edd_bbp_d_dashboard_shortcode( $atts, $content = null ) {
 	<?php endif;
 
 	$features_forum_id = pojo_get_option( 'pojo_features_forum_id' );
+	$support_forum_id = pojo_get_option( 'pojo_support_forum_id' );
 	if ( ! empty( $_GET['mod'] ) ) {
 		// Get open, assigned tickets
 		$args = array(
@@ -70,7 +71,8 @@ function edd_bbp_d_dashboard_shortcode( $atts, $content = null ) {
 				),
 			),
 			'posts_per_page' => - 1,
-			'post_parent__not_in' => array( $features_forum_id )
+			//'post_parent__not_in' => array( $features_forum_id ),
+			'post_parent' => $support_forum_id,
 		);
 		
 		$assigned_tickets = new WP_Query( $args );
@@ -131,11 +133,11 @@ function edd_bbp_d_dashboard_shortcode( $atts, $content = null ) {
 		'orderby' => 'meta_value',
 		'meta_key' => '_bbp_last_active_time',
 		'posts_per_page' => -1,
-		'post_parent__not_in' => array( $features_forum_id )
+		//'post_parent__not_in' => array( $features_forum_id ),
+		'post_parent' => $support_forum_id,
 	);
 	$waiting_tickets = new WP_Query( $args );
-
-
+	
 	// Get open, assigned tickets
 	$args = array(
 		'post_type'  => 'topic',
@@ -154,7 +156,8 @@ function edd_bbp_d_dashboard_shortcode( $atts, $content = null ) {
 		'orderby' => 'meta_value',
 		'meta_key' => '_bbp_last_active_time',
 		'posts_per_page' => -1,
-		'post_parent__not_in' => array( $features_forum_id )
+		//'post_parent__not_in' => array( $features_forum_id ),
+		'post_parent' => $support_forum_id,
 	);
 	$assigned_tickets = new WP_Query( $args );
 
@@ -179,7 +182,8 @@ function edd_bbp_d_dashboard_shortcode( $atts, $content = null ) {
 		'meta_key' => '_bbp_last_active_time',
 		'posts_per_page' => -1,
 		'post_status' => 'publish',
-		'post_parent__not_in' => array( $features_forum_id )
+		//'post_parent__not_in' => array( $features_forum_id ),
+		'post_parent' => $support_forum_id,
 	);
 	$unassigned_tickets = new WP_Query( $args );
 
@@ -206,7 +210,8 @@ function edd_bbp_d_dashboard_shortcode( $atts, $content = null ) {
 	// Get unresolved tickets
 	$args = array(
 		'post_type'  => 'topic',
-		'post_parent__not_in' => array( $features_forum_id ),
+		//'post_parent__not_in' => array( $features_forum_id ),
+		'post_parent' => $support_forum_id,
 		'posts_per_page' => -1,
 		'post_status' => 'publish',
 		'order' => 'ASC',
@@ -407,7 +412,9 @@ function edd_bbp_d_dashboard_shortcode( $atts, $content = null ) {
 							<th width="30%"><?php _e( 'Last Updated', 'pojo-bbpress-support' ); ?></th>
 						</tr>
 						<?php while ( $feature_requests->have_posts() ) : $feature_requests->the_post(); ?>
-							<tr class = "<?php echo $row_class; ?>">
+							<?php $last_reply_id = bbp_get_topic_last_reply_id( get_the_ID() ); ?>
+							<?php $last_reply_data = get_post( $last_reply_id ); ?>
+							<tr class="<?php echo $row_class; ?>">
 								<td>
 									<a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
 								</td>
