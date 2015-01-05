@@ -122,7 +122,8 @@ function edd_bbp_d_count_tickets_of_mod( $mod_id = 0 ) {
 			)
 		),
 		'nopaging' => true,
-		'post_parent__not_in' => array( pojo_get_option( 'pojo_features_forum_id' ) )
+		//'post_parent__not_in' => array( pojo_get_option( 'pojo_features_forum_id' ) ),
+		'post_parent' => pojo_get_option( 'pojo_support_forum_id' ),
 	);
 
 	$query = new WP_Query( $args );
