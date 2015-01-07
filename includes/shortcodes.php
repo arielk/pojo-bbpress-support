@@ -204,6 +204,7 @@ function edd_bbp_d_dashboard_shortcode( $atts, $content = null ) {
 		),
 		'posts_per_page' => -1,
 		'post_status' => 'publish',
+		'post_parent' => $support_forum_id,
 	);
 	$no_reply_tickets = new WP_Query( $args );
 
