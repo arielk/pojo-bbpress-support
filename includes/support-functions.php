@@ -476,6 +476,17 @@ function edd_bbp_d_reopen_topic_to_write( $reply_id = 0, $topic_id = 0, $forum_i
 }
 add_action( 'bbp_new_reply', 'edd_bbp_d_reopen_topic_to_write', 50, 6 );
 
+function edd_bbp_pojo_is_forum_closed( $closed, $forum_id, $check_ancestors ) {
+	if ( ! $closed ) {
+		if ( ! current_user_can( 'moderate' ) && ! edd_bbp_d_is_user_can_write_in_forum( get_current_user_id() ) ) {
+			$closed = true;
+		}
+	}
+	
+	return $closed;
+}
+add_action( 'bbp_is_forum_closed', 'edd_bbp_pojo_is_forum_closed', 50, 3 );
+
 function edd_bbp_close_old_tickets() {
 	$args = array(
 		'post_type' => 'topic',

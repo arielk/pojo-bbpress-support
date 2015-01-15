@@ -58,3 +58,43 @@ function edd_bbp_d_is_topic_premium() {
 function edd_bbp_d_topic_resolved( $topic_id ) {
 	return ( 2 == get_post_meta( $topic_id, '_bbps_topic_status', true ) );
 }
+
+/**
+ * @param int $user_id
+ *
+ * @return bool
+ */
+function edd_bbp_d_is_user_can_write_in_forum( $user_id = 0 ) {
+	global $wpdb;
+	
+	if ( 0 === absint( $user_id ) )
+		return false;
+	
+	$cache_key = 'edd_bbp_d_is_user_can_write_in_forum-' . $user_id;
+	
+	$return = get_transient( $cache_key );
+	if ( false === $return ) {
+		$license_ids = $wpdb->get_col(
+			$wpdb->prepare(
+				'SELECT `ID` FROM %1$s
+					WHERE `post_author` = \'%2$d\'
+						AND `post_type` = \'edd_license\';',
+				$wpdb->posts,
+				$user_id
+			)
+		);
+		
+		$return = 'false';
+		if ( ! is_null( $license_ids ) ) {
+			foreach ( $license_ids as $license_id ) {
+				if ( in_array( edd_software_licensing()->get_license_status( $license_id ), array( 'active', 'inactive' ) ) ) {
+					$return = 'true';
+					break;
+				}
+			}
+		}
+		
+		//set_transient( $cache_key, $return );
+	}
+	return 'true' === $return;
+}
