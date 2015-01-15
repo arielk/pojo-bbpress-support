@@ -296,7 +296,6 @@ function edd_bbp_add_topic_meta( $topic_id = 0, $topic ) {
 add_action( 'wp_insert_post', 'edd_bbp_add_topic_meta', 10, 2 );
 
 function edd_bbp_d_maybe_remove_pending( $reply_id, $topic_id, $forum_id, $anonymous_data, $reply_author ) {
-
 	if ( user_can( $reply_author, 'moderate' ) ) {
 		// If the new reply is posted by the assignee, remove the pending flag
 		delete_post_meta( $topic_id, '_bbps_topic_pending' );
@@ -304,6 +303,8 @@ function edd_bbp_d_maybe_remove_pending( $reply_id, $topic_id, $forum_id, $anony
 		// If the reply is posted by anyone else, add the pending reply
 		update_post_meta( $topic_id, '_bbps_topic_pending', '1' );
 	}
+	
+	
 }
 add_action( 'bbp_new_reply', 'edd_bbp_d_maybe_remove_pending', 20, 5 );
 
@@ -465,3 +466,12 @@ function edd_bbp_pojo_is_topic_closed( $closed, $topic_id ) {
 	return $closed;
 }
 add_filter( 'bbp_is_topic_closed', 'edd_bbp_pojo_is_topic_closed', 50, 2 );
+
+function edd_bbp_d_reopen_topic_to_write( $reply_id = 0, $topic_id = 0, $forum_id = 0, $anonymous_data = false, $author_id = 0, $is_edit = false ) {
+	$is_topic_author = bbp_get_topic_author_id( $topic_id ) === get_current_user_id();
+	
+	$topic_status = get_post_meta( $topic_id, '_bbps_topic_status', true );
+	if ( 2 === (int) $topic_status && $is_topic_author )
+		delete_post_meta( $topic_id, '_bbps_topic_status' );
+}
+add_action( 'bbp_new_reply', 'edd_bbp_d_reopen_topic_to_write', 50, 6 );
