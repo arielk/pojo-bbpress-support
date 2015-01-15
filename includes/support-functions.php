@@ -454,3 +454,14 @@ function edd_bbp_pojo_after_page_title() {
 	endif;
 }
 add_action( 'pojo_after_page_title', 'edd_bbp_pojo_after_page_title' );
+
+function edd_bbp_pojo_is_topic_closed( $closed, $topic_id ) {
+	if ( ! $closed && edd_bbp_d_topic_resolved( bbp_get_topic_id( $topic_id ) ) ) {
+		$is_topic_author = bbp_get_topic_author_id( $topic_id ) === get_current_user_id();
+		if ( ! current_user_can( 'moderate' ) && ! $is_topic_author ) {
+			$closed = true;
+		}
+	}
+	return $closed;
+}
+add_filter( 'bbp_is_topic_closed', 'edd_bbp_pojo_is_topic_closed', 50, 2 );
