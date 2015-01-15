@@ -383,7 +383,7 @@ function edd_bbp_d_add_user_purchases_link() {
 			echo '<li><strong><a href="' . admin_url( 'edit.php?post_type=download&page=edd-payment-history&view=view-order-details&id=' . $purchase->ID ) . '">#' . $purchase->ID . ' - ' . edd_get_payment_status( $purchase, true ) . '</a></strong></li>';
 			$downloads = edd_get_payment_meta_downloads( $purchase->ID );
 			foreach ( $downloads as $download ) {
-				echo '<li>' . get_the_title( $download['id'] ) . ' - ' . date( 'F j, Y', strtotime( $purchase->post_date ) ) . '</li>';
+				echo '<li>' . get_the_title( $download['id'] ) . ' - ' . date( 'F j, Y', strtotime( $purchase->post_date ) )    . '</li>';
 			}
 
 			if( function_exists( 'edd_software_licensing' ) ) {
@@ -472,6 +472,38 @@ function edd_bbp_d_reopen_topic_to_write( $reply_id = 0, $topic_id = 0, $forum_i
 	
 	$topic_status = get_post_meta( $topic_id, '_bbps_topic_status', true );
 	if ( 2 === (int) $topic_status && $is_topic_author )
-		delete_post_meta( $topic_id, '_bbps_topic_status' );
+		update_post_meta( $topic_id, '_bbps_topic_status', '1' );
 }
 add_action( 'bbp_new_reply', 'edd_bbp_d_reopen_topic_to_write', 50, 6 );
+
+function edd_bbp_close_old_tickets() {
+	$args = array(
+		'post_type' => 'topic',
+		'meta_query' => array(
+			'relation' => 'AND',
+			array(
+				'key' => '_bbps_topic_status',
+				'value' => '1', // Open tickets only
+			),
+			array(
+				'key' => '_bbps_topic_pending',
+				'compare' => 'NOT EXISTS',
+			),
+			array(
+				'key' => '_bbp_last_active_time',
+				'value' => date( 'Y-n-d H:i:s', strtotime( '-7 days' ) ),
+				'compare' => '<=', // Tickets older than nine days
+				'type' => 'DATETIME'
+			),
+		),
+		'posts_per_page' => 300,
+		'post_parent' => pojo_get_option( 'pojo_support_forum_id' ),
+	);
+	$tickets = get_posts( $args );
+	if ( $tickets ) {
+		foreach ( $tickets as $ticket ) {
+			update_post_meta( $ticket->ID, '_bbps_topic_status', 2 );
+		}
+	}
+}
+add_action( 'edd_daily_scheduled_events', 'edd_bbp_close_old_tickets' );
