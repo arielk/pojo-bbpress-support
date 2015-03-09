@@ -78,10 +78,10 @@ function edd_bbp_d_is_user_can_write_in_forum( $user_id = 0 ) {
 		
 		$license_ids = $wpdb->get_col(
 			$wpdb->prepare(
-				'SELECT `ID` FROM %1$s
-					WHERE `post_author` = \'%2$d\'
-						AND `post_type` = \'edd_license\';',
-				$wpdb->posts,
+				'SELECT `post_id` FROM %1$s
+					WHERE `meta_value` = \'%2$d\'
+						AND `meta_key` = \'_edd_sl_user_id\';',
+				$wpdb->postmeta,
 				$user_id
 			)
 		);
