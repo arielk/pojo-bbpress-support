@@ -70,10 +70,12 @@ function edd_bbp_d_is_user_can_write_in_forum( $user_id = 0 ) {
 	if ( 0 === absint( $user_id ) )
 		return false;
 	
-	$cache_key = 'edd_bbp_d_is_user_can_write_in_forum-' . $user_id;
+	$cache_key = 'edd_bbp_is_user_can_write_in_forum-' . $user_id;
 	
-	$return = get_transient( $cache_key );
+	$return = wp_cache_get( $cache_key );
 	if ( false === $return ) {
+		switch_to_blog( 1 );
+		
 		$license_ids = $wpdb->get_col(
 			$wpdb->prepare(
 				'SELECT `ID` FROM %1$s
@@ -94,7 +96,8 @@ function edd_bbp_d_is_user_can_write_in_forum( $user_id = 0 ) {
 			}
 		}
 		
-		//set_transient( $cache_key, $return );
+		restore_current_blog();
+		wp_cache_set( $cache_key, $return );
 	}
 	return 'true' === $return;
 }
