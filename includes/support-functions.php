@@ -521,20 +521,13 @@ function edd_bbp_pojo_messages() {
 	$msg = '';
 	
 	if ( ! is_user_logged_in() ) {
-		$msg = sprintf(
-			__( 'The support forum is open for members only. To add a topic or reply in the forum, please <a href="%s">login</a> or <a href="%s">register</a>.', 'pojo-bbpress-support' ),
-			'#login',
-			'#register'
-		);
+		$msg = __( 'The support forum is open for members only. To add a topic or reply in the forum, please <a href="http://pojo.me/my-account/login/">login</a> or <a href="http://pojo.me/my-account/register/">register</a>.', 'pojo-bbpress-support' );
 	} else {
 		$status = edd_bbp_d_get_current_license_status( get_current_user_id() );
 		if ( 'none' === $status ) {
 			$msg = __( 'The support forum is open for members only. To add a topic or reply in the forum, please purchase one of our products.', '' );
 		} elseif ( 'expired' === $status ) {
-			$msg = sprintf(
-				__( 'The support forum is open for members only. Your subscription has expired, please <a href="%s">renew</a> it in order to add a topic or reply in the forum.', 'pojo-bbpress-support' ),
-				'#my-account'
-			);
+			$msg = __( 'The support forum is open for members only. Your subscription has expired, please <a href="http://pojo.me/my-account/">renew</a> it in order to add a topic or reply in the forum.', 'pojo-bbpress-support' );
 		}
 	}
 	
