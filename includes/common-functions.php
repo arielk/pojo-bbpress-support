@@ -59,23 +59,18 @@ function edd_bbp_d_topic_resolved( $topic_id ) {
 	return ( 2 == get_post_meta( $topic_id, '_bbps_topic_status', true ) );
 }
 
-/**
- * @param int $user_id
- *
- * @return bool
- */
-function edd_bbp_d_is_user_can_write_in_forum( $user_id = 0 ) {
+function edd_bbp_d_get_current_license_status( $user_id = 0 ) {
 	global $wpdb;
-	
+
 	if ( 0 === absint( $user_id ) )
-		return false;
-	
-	$cache_key = 'edd_bbp_is_user_can_write_in_forum-' . $user_id;
-	
-	$return = wp_cache_get( $cache_key );
-	if ( false === $return ) {
+		return 'none';
+
+	$cache_key = 'edd_bbp_d_get_current_license_status-' . $user_id;
+
+	$status = wp_cache_get( $cache_key );
+	if ( false === $status ) {
 		switch_to_blog( 1 );
-		
+
 		$license_ids = $wpdb->get_col(
 			$wpdb->prepare(
 				'SELECT `post_id` FROM %1$s
@@ -85,19 +80,36 @@ function edd_bbp_d_is_user_can_write_in_forum( $user_id = 0 ) {
 				$user_id
 			)
 		);
-		
-		$return = 'false';
+
+		$status = 'none';
 		if ( ! is_null( $license_ids ) ) {
 			foreach ( $license_ids as $license_id ) {
-				if ( in_array( edd_software_licensing()->get_license_status( $license_id ), array( 'active', 'inactive' ) ) ) {
-					$return = 'true';
+				$license_status = edd_software_licensing()->get_license_status( $license_id );
+				if ( in_array( $license_status, array( 'active', 'inactive' ) ) ) {
+					$status = 'active';
 					break;
+				}
+
+				if ( 'expired' === $license_status ) {
+					$status = $license_status;
 				}
 			}
 		}
-		
+
 		restore_current_blog();
-		wp_cache_set( $cache_key, $return );
+		wp_cache_set( $cache_key, $status );
 	}
-	return 'true' === $return;
+
+	return $status;
+}
+
+/**
+ * @param int $user_id
+ *
+ * @return bool
+ */
+function edd_bbp_d_is_user_can_write_in_forum( $user_id = 0 ) {
+	if ( 'active' === edd_bbp_d_get_current_license_status( $user_id ) )
+		return true;
+	return false;
 }

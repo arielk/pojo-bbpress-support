@@ -309,13 +309,11 @@ function edd_bbp_d_maybe_remove_pending( $reply_id, $topic_id, $forum_id, $anony
 add_action( 'bbp_new_reply', 'edd_bbp_d_maybe_remove_pending', 20, 5 );
 
 function edd_bbp_d_bulk_remove_pending() {
-	if ( ! current_user_can( 'moderate' ) ) {
+	if ( ! current_user_can( 'moderate' ) )
 		return;
-	}
 
-	if ( empty( $_POST['tickets'] ) ) {
+	if ( empty( $_POST['tickets'] ) )
 		return;
-	}
 
 	$tickets = array_map( 'absint', $_POST['tickets'] );
 
@@ -326,13 +324,11 @@ function edd_bbp_d_bulk_remove_pending() {
 add_action( 'edd_remove_ticket_pending_status', 'edd_bbp_d_bulk_remove_pending', 20, 5 );
 
 function edd_bbp_d_bulk_close_tickets() {
-	if ( ! current_user_can( 'moderate' ) ) {
+	if ( ! current_user_can( 'moderate' ) )
 		return;
-	}
 
-	if ( empty( $_POST['tickets'] ) ) {
+	if ( empty( $_POST['tickets'] ) )
 		return;
-	}
 
 	$tickets = array_map( 'absint', $_POST['tickets'] );
 
@@ -353,8 +349,10 @@ add_action( 'bbp_new_reply', 'edd_bbp_d_assign_on_reply', 20, 5 );
 function edd_bbp_d_force_remove_pending() {
 	if ( ! isset( $_GET['topic_id'] ) )
 		return;
+	
 	if ( ! isset( $_GET['bbps_action'] ) || $_GET['bbps_action'] != 'remove_pending' )
 		return;
+	
 	if ( ! current_user_can( 'moderate' ) )
 		return;
 
@@ -483,7 +481,6 @@ function edd_bbp_pojo_is_forum_closed( $closed, $forum_id, $check_ancestors ) {
 			$closed = true;
 		}
 	}
-	
 	return $closed;
 }
 add_action( 'bbp_is_forum_closed', 'edd_bbp_pojo_is_forum_closed', 50, 3 );
@@ -519,3 +516,30 @@ function edd_bbp_close_old_tickets() {
 	}
 }
 add_action( 'edd_daily_scheduled_events', 'edd_bbp_close_old_tickets' );
+
+function edd_bbp_pojo_messages() {
+	$msg = '';
+	
+	if ( ! is_user_logged_in() ) {
+		$msg = sprintf(
+			__( 'The support forum is open for members only. To add a topic or reply in the forum, please <a href="%s">login</a> or <a href="%s">register</a>.', 'pojo-bbpress-support' ),
+			'#login',
+			'#register'
+		);
+	} else {
+		$status = edd_bbp_d_get_current_license_status( get_current_user_id() );
+		if ( 'none' === $status ) {
+			$msg = __( 'The support forum is open for members only. To add a topic or reply in the forum, please purchase one of our products.', '' );
+		} elseif ( 'expired' === $status ) {
+			$msg = sprintf(
+				__( 'The support forum is open for members only. Your subscription has expired, please <a href="%s">renew</a> it in order to add a topic or reply in the forum.', 'pojo-bbpress-support' ),
+				'#my-account'
+			);
+		}
+	}
+	
+	if ( ! empty( $msg ) ) {
+		pojo_alert( $msg, false, false, 'info' );
+	}
+}
+add_action( 'pojo_after_page_title', 'edd_bbp_pojo_messages', 20 );
