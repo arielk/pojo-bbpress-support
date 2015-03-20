@@ -449,8 +449,15 @@ function edd_bbp_d_new_topic_notice() {
 add_action( 'bbp_template_notices', 'edd_bbp_d_new_topic_notice' );
 
 function edd_bbp_pojo_after_page_title() {
-	if ( Pojo_Compatibility::is_bbpress_installed() && is_bbpress() && current_user_can( 'moderate' ) ) :
+	if ( ! Pojo_Compatibility::is_bbpress_installed() || ! is_bbpress() )
+		return;
+	
+	if ( current_user_can( 'moderate' ) ) :
 		echo '<a href="' . get_permalink( pojo_get_option( 'pojo_support_panel_page_id' ) ) . '" class="go-to-support-panel button">' . __( 'Support Panel', 'pojo-bbpress-support' ) . '</a>';
+	endif;
+
+	if ( edd_bbp_d_is_user_can_write_in_forum( get_current_user_id() ) ) :
+		echo '<a href="#new-post">' . __( 'New Post', 'pojo-bbpress-support' ) . '</a>';
 	endif;
 }
 add_action( 'pojo_after_page_title', 'edd_bbp_pojo_after_page_title' );
@@ -518,6 +525,9 @@ function edd_bbp_close_old_tickets() {
 add_action( 'edd_daily_scheduled_events', 'edd_bbp_close_old_tickets' );
 
 function edd_bbp_pojo_messages() {
+	if ( ! Pojo_Compatibility::is_bbpress_installed() || ! is_bbpress() )
+		return;
+	
 	$msg = '';
 	
 	if ( ! is_user_logged_in() ) {
@@ -551,6 +561,9 @@ function edd_bbp_pojo_register_support_sidebar() {
 add_action( 'widgets_init', 'edd_bbp_pojo_register_support_sidebar' );
 
 function edd_bbp_pojo_display_sidebar() {
+	if ( ! Pojo_Compatibility::is_bbpress_installed() || ! is_bbpress() )
+		return;
+	
 	if ( ! edd_bbp_d_is_user_can_write_in_forum( get_current_user_id() ) )
 		return;
 	
