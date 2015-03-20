@@ -536,3 +536,24 @@ function edd_bbp_pojo_messages() {
 	}
 }
 add_action( 'pojo_after_page_title', 'edd_bbp_pojo_messages', 20 );
+
+function edd_bbp_pojo_register_support_sidebar() {
+	register_sidebar( array(
+		'id'            => 'pojo-' . sanitize_title( 'Forum Support' ),
+		'name'          => __( 'Forum Support', 'pojo-bbpress-support' ),
+		'description'   => __( 'These are widgets for the Forum Support', 'pojo-bbpress-support' ),
+		'before_widget' => '<section id="%1$s" class="widget %2$s"><div class="widget-inner">',
+		'after_widget'  => '</div></section>',
+		'before_title'  => '<h5 class="widget-title"><span>',
+		'after_title'   => '</span></h5>',
+	) );
+}
+add_action( 'widgets_init', 'edd_bbp_pojo_register_support_sidebar' );
+
+function edd_bbp_pojo_display_sidebar() {
+	if ( ! edd_bbp_d_is_user_can_write_in_forum( get_current_user_id() ) )
+		return;
+	
+	dynamic_sidebar( 'pojo-' . sanitize_title( 'Forum Support' ) );
+}
+add_action( 'pojo_after_page_title', 'edd_bbp_pojo_display_sidebar', 30 );
