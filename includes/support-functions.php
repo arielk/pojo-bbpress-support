@@ -570,7 +570,7 @@ function edd_bbp_pojo_display_sidebar() {
 	endif;
 	
 	if ( bbp_is_single_forum() ) :
-		echo '<a href="#new-post" class="btn-goto-new-topic button">' . __( 'New Topic', 'pojo-bbpress-support' ) . '</a>';
+		echo '<a href="#new-post" class="go-to-new-topic button">' . __( 'New Topic', 'pojo-bbpress-support' ) . '</a>';
 	endif;
 }
 add_action( 'pojo_after_page_title', 'edd_bbp_pojo_display_sidebar', 30 );
