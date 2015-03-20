@@ -563,9 +563,8 @@ function edd_bbp_pojo_display_sidebar() {
 	if ( ! edd_bbp_d_is_user_can_write_in_forum( get_current_user_id() ) )
 		return;
 
+	dynamic_sidebar( 'pojo-' . sanitize_title( 'Forum Support' ) );
 	
 	echo '<a href="#new-post">' . __( 'New Post', 'pojo-bbpress-support' ) . '</a>';
-	
-	dynamic_sidebar( 'pojo-' . sanitize_title( 'Forum Support' ) );
 }
 add_action( 'pojo_after_page_title', 'edd_bbp_pojo_display_sidebar', 30 );
