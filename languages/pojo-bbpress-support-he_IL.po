@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pojo-bbpress-support 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-03-20 11:10+0200\n"
-"PO-Revision-Date: 2015-03-20 11:11+0200\n"
+"POT-Creation-Date: 2015-03-20 11:12+0200\n"
+"PO-Revision-Date: 2015-03-20 11:13+0200\n"
 "Last-Translator: Yakir Sitbon <kingyes1@gmail.com>\n"
 "Language-Team: Pojo Team <LL@li.org>\n"
 "Language: he_IL\n"
@@ -158,7 +158,7 @@ msgid "Features Forum"
 msgstr "פורום רעיונות"
 
 #: includes/class-pojo-settings-supports.php:24
-#: includes/support-functions.php:453
+#: includes/support-functions.php:456
 msgid "Support Panel"
 msgstr "פאנל תמיכה"
 
@@ -371,7 +371,7 @@ msgid ""
 "Please search the forums for existing questions before posting a new one."
 msgstr "אנא חפשו בפורום את שאלתכם לפני שאתם מפרסמים דיון חדש."
 
-#: includes/support-functions.php:524
+#: includes/support-functions.php:530
 msgid ""
 "The support forum is open for members only. To add a topic or reply in the "
 "forum, please <a href=\"http://pojo.me/my-account/login/\">login</a> or <a "
@@ -381,7 +381,7 @@ msgstr ""
 "account/login/\">להתחבר</a> או <a href=\"http://pojo.co.il/my-account/"
 "register/\">להרשם</a> כדי להוסיף דיון או תגובה בפורום."
 
-#: includes/support-functions.php:528
+#: includes/support-functions.php:534
 msgid ""
 "The support forum is open for members only. To add a topic or reply in the "
 "forum, please purchase one of our products."
@@ -389,7 +389,7 @@ msgstr ""
 "פורום התמיכה פתוח למשתמשים מנויים בלבד. יש לרכוש את אחד מהמוצרים שלנו כדי "
 "כדי להוסיף דיון או תגובה בפורום."
 
-#: includes/support-functions.php:530
+#: includes/support-functions.php:536
 msgid ""
 "The support forum is open for members only. Your subscription has expired, "
 "please <a href=\"http://pojo.me/my-account/\">renew</a> it in order to add a "
@@ -399,13 +399,17 @@ msgstr ""
 "\"http://pojo.co.il/my-account/\">לחדש</a> אותו כדי להוסיף דיון או תגובה "
 "בפורום."
 
-#: includes/support-functions.php:543
+#: includes/support-functions.php:549
 msgid "Forum Support"
 msgstr "פורום תמיכה"
 
-#: includes/support-functions.php:544
+#: includes/support-functions.php:550
 msgid "These are widgets for the Forum Support"
 msgstr "אזור וידג'טים עבור פורום התמיכה"
+
+#: includes/support-functions.php:573
+msgid "New Topic"
+msgstr "דיון חדש"
 
 #: includes/widget-hours.php:14
 msgid "Forum Support Hours"
