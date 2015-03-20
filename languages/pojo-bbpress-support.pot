@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pojo-bbpress-support 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-03-20 11:10+0200\n"
+"POT-Creation-Date: 2015-03-20 11:12+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -155,7 +155,7 @@ msgid "Features Forum"
 msgstr ""
 
 #: includes/class-pojo-settings-supports.php:24
-#: includes/support-functions.php:453
+#: includes/support-functions.php:456
 msgid "Support Panel"
 msgstr ""
 
@@ -365,32 +365,36 @@ msgid ""
 "Please search the forums for existing questions before posting a new one."
 msgstr ""
 
-#: includes/support-functions.php:524
+#: includes/support-functions.php:530
 msgid ""
 "The support forum is open for members only. To add a topic or reply in the "
 "forum, please <a href=\"http://pojo.me/my-account/login/\">login</a> or <a "
 "href=\"http://pojo.me/my-account/register/\">register</a>."
 msgstr ""
 
-#: includes/support-functions.php:528
+#: includes/support-functions.php:534
 msgid ""
 "The support forum is open for members only. To add a topic or reply in the "
 "forum, please purchase one of our products."
 msgstr ""
 
-#: includes/support-functions.php:530
+#: includes/support-functions.php:536
 msgid ""
 "The support forum is open for members only. Your subscription has expired, "
 "please <a href=\"http://pojo.me/my-account/\">renew</a> it in order to add a "
 "topic or reply in the forum."
 msgstr ""
 
-#: includes/support-functions.php:543
+#: includes/support-functions.php:549
 msgid "Forum Support"
 msgstr ""
 
-#: includes/support-functions.php:544
+#: includes/support-functions.php:550
 msgid "These are widgets for the Forum Support"
+msgstr ""
+
+#: includes/support-functions.php:573
+msgid "New Topic"
 msgstr ""
 
 #: includes/widget-hours.php:14
