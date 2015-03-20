@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pojo-bbpress-support 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-03-19 16:51+0200\n"
+"POT-Creation-Date: 2015-03-20 10:27+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -155,7 +155,7 @@ msgid "Features Forum"
 msgstr ""
 
 #: includes/class-pojo-settings-supports.php:24
-#: includes/support-functions.php:455
+#: includes/support-functions.php:453
 msgid "Support Panel"
 msgstr ""
 
@@ -348,27 +348,49 @@ msgstr ""
 msgid "Ping Assignee"
 msgstr ""
 
-#: includes/support-functions.php:376
+#: includes/support-functions.php:374
 msgid "User's Purchases"
 msgstr ""
 
-#: includes/support-functions.php:390
+#: includes/support-functions.php:388
 msgid "Licenses"
 msgstr ""
 
-#: includes/support-functions.php:402
+#: includes/support-functions.php:400
 msgid "This user has never purchased anything."
 msgstr ""
 
-#: includes/support-functions.php:448
+#: includes/support-functions.php:446
 msgid ""
 "Please search the forums for existing questions before posting a new one."
 msgstr ""
 
-#: includes/support-functions.php:527
+#: includes/support-functions.php:524
 msgid ""
 "The support forum is open for members only. To add a topic or reply in the "
-"forum, please login or register."
+"forum, please <a href=\"http://pojo.me/my-account/login/\">login</a> or <a "
+"href=\"http://pojo.me/my-account/register/\">register</a>."
+msgstr ""
+
+#: includes/support-functions.php:528
+msgid ""
+"The support forum is open for members only. To add a topic or reply in the "
+"forum, please purchase one of our products."
+msgstr ""
+
+#: includes/support-functions.php:530
+msgid ""
+"The support forum is open for members only. Your subscription has expired, "
+"please <a href=\"http://pojo.me/my-account/\">renew</a> it in order to add a "
+"topic or reply in the forum."
+msgstr ""
+
+#: includes/support-functions.php:543
+msgid "Forum Support"
+msgstr ""
+
+#: includes/support-functions.php:544
+msgid "These are widgets for the Forum Support"
 msgstr ""
 
 #: includes/widget-hours.php:14
