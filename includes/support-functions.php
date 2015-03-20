@@ -456,7 +456,7 @@ function edd_bbp_pojo_after_page_title() {
 		echo '<a href="' . get_permalink( pojo_get_option( 'pojo_support_panel_page_id' ) ) . '" class="go-to-support-panel button">' . __( 'Support Panel', 'pojo-bbpress-support' ) . '</a>';
 	endif;
 }
-add_action( 'pojo_after_page_title', 'edd_bbp_pojo_after_page_title' );
+add_action( 'pojo_after_page_title', 'edd_bbp_pojo_after_page_title', 40 );
 
 function edd_bbp_pojo_is_topic_closed( $closed, $topic_id ) {
 	if ( ! $closed && edd_bbp_d_topic_resolved( bbp_get_topic_id( $topic_id ) ) ) {
@@ -563,8 +563,12 @@ function edd_bbp_pojo_display_sidebar() {
 	if ( ! edd_bbp_d_is_user_can_write_in_forum( get_current_user_id() ) )
 		return;
 
-	dynamic_sidebar( 'pojo-' . sanitize_title( 'Forum Support' ) );
+	if ( is_active_sidebar( 'pojo-' . sanitize_title( 'Forum Support' ) ) ) :
+		echo '<div class="support-forum-widgets-top">';
+		dynamic_sidebar( 'pojo-' . sanitize_title( 'Forum Support' ) );
+		echo '</div>';
+	endif;
 	
-	echo '<a href="#new-post">' . __( 'New Post', 'pojo-bbpress-support' ) . '</a>';
+	echo '<a href="#new-post" class="btn-goto-new-topic button">' . __( 'New Topic', 'pojo-bbpress-support' ) . '</a>';
 }
 add_action( 'pojo_after_page_title', 'edd_bbp_pojo_display_sidebar', 30 );
